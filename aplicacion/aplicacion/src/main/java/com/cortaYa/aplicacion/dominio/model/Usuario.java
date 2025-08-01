@@ -25,7 +25,9 @@ public class Usuario {
     private String nombre;
     private String email;
     private Integer nroCelu;
+    @OneToOne
     private Direccion direccion;
     private String contrasenia;
+    @OneToMany
     private List<Reserva> reservas;
 }
