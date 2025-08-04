@@ -10,11 +10,11 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import java.util.List;
 
-
+//crean todos los setters y getters
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor //se agrega el constructor vacio
+@AllArgsConstructor //se agrega el constructor con todos los elementos
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario {
