@@ -22,7 +22,7 @@ public class LoginController {
     @GetMapping("/hola")
     @ResponseBody
     public String helloWord(){
-        return "Alexis re gayyyy";
+        return "Serielize";
     }
     @GetMapping("chau")
     @ResponseBody

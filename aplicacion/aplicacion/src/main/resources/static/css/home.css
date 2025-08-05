@@ -1,0 +1,39 @@
+body {
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Logo arriba a la izquierda */
+.logo {
+    height: 160px;
+    position:relative;
+}
+
+/* Imagen perfil arriba a la derecha */
+.perfil-img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+/* Imagen central: bandera */
+.bandera {
+    height: 200px;
+}
+
+/* Imagen fija abajo a la izquierda */
+.cartas {
+    position: absolute;
+    bottom: 0;
+    bottom: -70px
+    left: -60px;
+    height: 250px;
+}
+.btn-primary{
+font-weight: bold;}
+
+.mb-4{
+margin-bottom: 1.5rem!important
+}

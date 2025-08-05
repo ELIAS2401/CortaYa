@@ -3,13 +3,12 @@ package com.cortaYa.aplicacion.dominio.model;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 
 import java.util.List;
 import java.util.Map;
 
 @Entity
-public class UsuarioBarber extends Usuario {
+public class UsuarioBarber extends UsuarioCliente {
     private Integer puntuacionPromedio;
     @ElementCollection
     private List<Pago> pagosRecibidos;
