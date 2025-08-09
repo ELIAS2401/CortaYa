@@ -4,6 +4,45 @@ body {
     overflow-x: hidden;
     font-family: 'Segoe UI', sans-serif;
 }
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1030;
+  background-color: #212529; /* tu color de fondo */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  animation: slideDown 0.4s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.4s ease-in-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+#mainHeader {
+    height: 160px;
+    background-color: #212529; /* o el color que uses */
+}
+.header-placeholder {
+  height: 160px; /* ajustá según la altura de tu header */
+}
 
 /* Logo arriba a la izquierda */
 .logo {
@@ -26,8 +65,7 @@ body {
 /* Imagen fija abajo a la izquierda */
 .cartas {
     position: absolute;
-    bottom: 0;
-    bottom: -70px
+    bottom: -70px;
     left: -60px;
     height: 250px;
 }
@@ -35,5 +73,9 @@ body {
 font-weight: bold;}
 
 .mb-4{
-margin-bottom: 1.5rem!important
+margin-bottom: 0rem!important;
 }
+
+footer{
+background-color: green; }
+

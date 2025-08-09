@@ -11,7 +11,7 @@
 <body class="bg-dark text-white">
 
 <!-- HEADER -->
-<header class="d-flex justify-content-between align-items-center p-3">
+<header id="mainHeader" class="d-flex justify-content-between align-items-center p-3">
     <img src="/img/logo.png" alt="Logo" class="logo">
 
     <div class="d-flex align-items-center gap-3">
@@ -34,8 +34,37 @@
 <!-- CARTAS (abajo izquierda) -->
 <img src="/img/cartas.png" alt="Cartas" class="cartas">
 
+<div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="/img/messi.jpg" class="d-block w-100" alt="..." height="1400px" width="20px">
+        </div>
+        <div class="carousel-item">
+            <img src="/img/maradona.jpg" class="d-block w-100" alt="..." height="400px" width="20px">
+        </div>
+        <div class="carousel-item">
+            <img src="/img/perfil.jpg" class="d-block w-100" alt="..." height="400px" width="20px">
+        </div>
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<footer>
+
+    este es el fooot
+
+</footer>
+
 <!-- Bootstrap JS + tu JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/js/home.js"></script>
+
 </body>
 </html>
