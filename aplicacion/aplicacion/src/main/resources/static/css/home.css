@@ -40,15 +40,17 @@ body {
     height: 80px;
     background-color: #212529; /* o el color que uses */
 }
+.gap-3 {
+    margin-top: 20px;
+    gap: 1rem !important;
+}
 
 .d-flex {
-    display: flex !important
-;
-margin-top:10px;
+    display: flex !important;
 }
 
 .header-placeholder {
-  height: 160px; /* ajustá según la altura de tu header */
+  height: 80px; /* ajustá según la altura de tu header */
 }
 .p-3 {
     padding: 0rem !important;
@@ -103,3 +105,17 @@ footer{
 
 .align-items-center {
     align-items: start !important;
+    margin-right:10px;
+    }
+    .carousel-item {
+      transition: transform 1.2s ease-in-out; /* más lento y fluido */
+    }
+
+    /* foto perfil*/
+.perfil-img {
+    position: relative;
+    bottom: 5px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
