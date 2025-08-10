@@ -37,19 +37,28 @@ body {
   }
 }
 #mainHeader {
-    height: 160px;
+    height: 80px;
     background-color: #212529; /* o el color que uses */
 }
+
+.d-flex {
+    display: flex !important
+;
+margin-top:10px;
+}
+
 .header-placeholder {
   height: 160px; /* ajustá según la altura de tu header */
 }
-
+.p-3 {
+    padding: 0rem !important;
+}
 /* Logo arriba a la izquierda */
 .logo {
-    height: 160px;
-    position:relative;
+    height: 100px;
+    position: relative;
+    bottom: 10px;
 }
-
 /* Imagen perfil arriba a la derecha */
 .perfil-img {
     height: 40px;
@@ -64,8 +73,8 @@ body {
 
 /* Imagen fija abajo a la izquierda */
 .cartas {
-    position: absolute;
-    bottom: -70px;
+    position: fixed;
+    top: 280px;
     left: -60px;
     height: 250px;
 }
@@ -79,3 +88,16 @@ margin-bottom: 0rem!important;
 footer{
 background-color: green; }
 
+/* top titulo modificado. viene x bootstrap*/
+.mt-5 {
+  margin-top: 0 !important;
+}
+.carousel
+ {
+    margin-top: 40px;
+}
+
+/*nav.. al lado del perfil */
+
+.align-items-center {
+    align-items: start !important;
