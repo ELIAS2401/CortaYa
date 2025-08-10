@@ -86,7 +86,9 @@ margin-bottom: 0rem!important;
 }
 
 footer{
-background-color: green; }
+  background-color: #212529;
+  display:flex;
+}
 
 /* top titulo modificado. viene x bootstrap*/
 .mt-5 {
