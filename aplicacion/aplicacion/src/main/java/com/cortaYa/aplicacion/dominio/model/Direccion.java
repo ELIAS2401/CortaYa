@@ -19,4 +19,10 @@ public class Direccion {
     private Integer nro;
     @ManyToOne
     private Localidad localidad;
+
+    public Direccion(String nombre, Integer nro, Localidad localidad) {
+        this.nombre = nombre;
+        this.nro = nro;
+        this.localidad = localidad;
+    }
 }
