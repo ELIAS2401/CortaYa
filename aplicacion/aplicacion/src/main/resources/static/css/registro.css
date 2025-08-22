@@ -100,3 +100,23 @@ html {
     height: 120vh;
     /* overflow-y: hidden; */
 }
+
+#map {
+    margin: 0 auto; /* centrado horizontal */
+    display: block; /* necesario para que el margin funcione */
+    width: auto !important;
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%; /* ahora tomará el ancho del input */
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.d-grid {
+    margin-top: 10px
+}
