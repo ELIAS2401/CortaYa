@@ -1,5 +1,6 @@
 package com.cortaYa.aplicacion.dominio.model;
 
+import com.cortaYa.aplicacion.dominio.dtos.LocalidadDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,5 +33,15 @@ public class Localidad {
         this.localidadLon = localidadLon;
     }
 
+    public Localidad(String nombre) {
+        this.nombre = nombre;
+    }
 
+    public LocalidadDTO toDTO() {
+        return new LocalidadDTO(this.idLocalidad, this.nombre);
+    }
+
+    public static Localidad fromDTO(LocalidadDTO localidadDTO) {
+        return new Localidad(localidadDTO.getNombre());
+    }
 }

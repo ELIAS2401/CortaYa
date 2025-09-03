@@ -1,13 +1,13 @@
 package com.cortaYa.aplicacion.dominio.services;
 
+import com.cortaYa.aplicacion.dominio.dtos.LocalidadDTO;
 import com.cortaYa.aplicacion.dominio.model.Localidad;
 
 import java.util.List;
 
 public interface LocalidadService {
-    Localidad buscarLocalidad(Long id);
+    public List<Localidad> buscarPorNombre(String nombre);
+    public List<LocalidadDTO> obtenerTodasLasLocalidades();
 
-    void registrarLocalidad(Localidad localidadCliente);
-
-    List<Localidad> obtenerLocalidades();
+    Localidad buscarPorId(Long localidadId);
 }
