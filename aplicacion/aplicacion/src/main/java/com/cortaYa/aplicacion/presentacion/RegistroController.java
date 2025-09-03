@@ -1,6 +1,7 @@
 package com.cortaYa.aplicacion.presentacion;
 
 
+import com.cortaYa.aplicacion.dominio.dtos.LocalidadDTO;
 import com.cortaYa.aplicacion.dominio.model.Direccion;
 import com.cortaYa.aplicacion.dominio.model.Localidad;
 import com.cortaYa.aplicacion.dominio.model.Usuario;
@@ -38,43 +39,41 @@ public class RegistroController {
     public ModelAndView viewRegistro() {
         ModelMap model = new ModelMap();
         model.addAttribute("usuario", new Usuario());
-        List<Localidad> localidades = localidadService.obtenerLocalidades();
-        model.addAttribute("localidades", localidades);
         return new ModelAndView("registro", model);
     }
 
-    @PostMapping("/procesarRegistro")
-    public String procesarRegistro(@ModelAttribute Usuario usuario, @RequestParam String rol,
-                                   @RequestParam String calle,
-                                   @RequestParam Long localidadId,
-                                   @RequestParam Integer altura,
-                                   @RequestParam Double direccionLat,
-                                   @RequestParam Double direccionLon,
-                                   @RequestParam(required = false) String localidadCP,
-                                   Model model) {
-
-                Localidad localidadCliente = localidadService.buscarLocalidad(localidadId);
-
-        usuario.setLocalidad(localidadCliente);
-
-        Direccion direccionCliente = direccionService.buscarDireccion(direccionLat, direccionLon);
-        if (direccionCliente == null) {
-            direccionCliente = new Direccion(calle, altura, localidadCliente);
-            direccionService.registrarDireccion(direccionCliente);
-        }
-        usuario.setDireccion(direccionCliente);
-
-        try {
-            if ("Cliente".equalsIgnoreCase(rol)) {
-                registroService.registrarCliente(usuario.getNombre(), usuario.getContrasenia(), usuario.getEmail(), usuario.getNroCelular(), usuario.getLocalidad(), usuario.getDireccion());
-            } else if ("Barbero".equalsIgnoreCase(rol)) {
-                registroService.registrarBarbero(usuario.getNombre(), usuario.getContrasenia(), usuario.getEmail(), usuario.getNroCelular(), usuario.getLocalidad(), usuario.getDireccion());
-            }
-            return "redirect:/login?RegistroSuccessful";
-        } catch (Exception e) {
-            model.addAttribute("error", e.getMessage());
-            return "registro";
-        }
-    }
+//    @PostMapping("/procesarRegistro")
+//    public String procesarRegistro(@ModelAttribute Usuario usuario, @RequestParam String rol,
+//                                   @RequestParam String calle,
+//                                   @RequestParam Long localidadId,
+//                                   @RequestParam Integer altura,
+//                                   @RequestParam Double direccionLat,
+//                                   @RequestParam Double direccionLon,
+//                                   @RequestParam(required = false) String localidadCP,
+//                                   Model model) {
+//
+//                Localidad localidadCliente = localidadService.buscarPorId(localidadId);
+//
+//        usuario.setLocalidad(localidadCliente);
+//
+//        Direccion direccionCliente = direccionService.buscarDireccion(direccionLat, direccionLon);
+//        if (direccionCliente == null) {
+//            direccionCliente = new Direccion(calle, altura, localidadCliente);
+//            direccionService.registrarDireccion(direccionCliente);
+//        }
+//        usuario.setDireccion(direccionCliente);
+//
+//        try {
+//            if ("Cliente".equalsIgnoreCase(rol)) {
+//                registroService.registrarCliente(usuario.getNombre(), usuario.getContrasenia(), usuario.getEmail(), usuario.getNroCelular(), usuario.getLocalidad(), usuario.getDireccion());
+//            } else if ("Barbero".equalsIgnoreCase(rol)) {
+//                registroService.registrarBarbero(usuario.getNombre(), usuario.getContrasenia(), usuario.getEmail(), usuario.getNroCelular(), usuario.getLocalidad(), usuario.getDireccion());
+//            }
+//            return "redirect:/login?RegistroSuccessful";
+//        } catch (Exception e) {
+//            model.addAttribute("error", e.getMessage());
+//            return "registro";
+//        }
+//    }
 
 }

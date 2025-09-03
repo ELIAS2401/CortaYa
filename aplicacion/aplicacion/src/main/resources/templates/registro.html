@@ -21,167 +21,188 @@
 </head>
 
 <body>
-<div class="container-fluid p-0">
-    <div class="row g-0">
-        <div class="col-md-6 left-side">
-            <img src="/img/logo.png" alt="Logo" class="logo">
-            <div class="form-box">
-                <h4 class="fw-bold text-center mb-4">Registrate en CortaYa</h4>
-                <form th:action="@{/procesarRegistro}" th:object="${usuario}" method="post">
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <div class="col-md-6 left-side">
+                <img src="/img/logo.png" alt="Logo" class="logo">
+                <div class="form-box">
+                    <h4 class="fw-bold text-center mb-4">Registrate en CortaYa</h4>
+                    <form th:action="@{/procesarRegistro}" th:object="${usuario}" method="post">
 
-                    <!-- Datos personales -->
-                    <div class="mb-3">
-                        <label class="form-label">Nombre</label>
-                        <input th:field="*{nombre}" type="text" class="form-control" placeholder="Ej: Pato Toranzo" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Email</label>
-                        <input th:field="*{email}" type="email" class="form-control" placeholder="Ej: pato@gmail.com" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Nro Celular</label>
-                        <input th:field="*{nroCelular}" type="text" class="form-control" placeholder="Ej: 011 1234 - 4567" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Contraseña</label>
-                        <input th:field="*{contrasenia}" type="password" class="form-control" placeholder="Al menos 8 caracteres" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Confirmar contraseña</label>
-                        <input type="password" class="form-control" placeholder="Confirma contraseña" required>
-                    </div>
-
-                    <!-- Rol -->
-                    <div class="mb-3">
-                        <label class="form-label">Rol</label>
-                        <div class="d-flex gap-2">
-                            <button type="button" class="role-btn btn btn-outline-primary" id="btnCliente">Cliente</button>
-                            <button type="button" class="role-btn btn btn-outline-secondary" id="btnBarbero">Barbero</button>
+                        <!-- Datos personales -->
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input th:field="*{nombre}" type="text" class="form-control" placeholder="Ej: Pato Toranzo"
+                                required>
                         </div>
-                        <input type="hidden" name="rol" id="rolInput" required>
-                    </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input th:field="*{email}" type="email" class="form-control"
+                                placeholder="Ej: pato@gmail.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nro Celular</label>
+                            <input th:field="*{nroCelular}" type="text" class="form-control"
+                                placeholder="Ej: 011 1234 - 4567" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Contraseña</label>
+                            <input th:field="*{contrasenia}" type="password" class="form-control"
+                                placeholder="Al menos 8 caracteres" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Confirmar contraseña</label>
+                            <input type="password" class="form-control" placeholder="Confirma contraseña" required>
+                        </div>
 
-                    <!-- Localidad -->
-                    <div class="mb-3 position-relative">
-                        <label class="form-label">Localidad</label>
-                        <input type="text" class="form-control" id="localidad" name="localidadName" placeholder="Ej: Ciudadela" autocomplete="off" required>
-                        <ul id="suggestionsLocalidad" class="list-group position-absolute w-100" style="z-index:1000;"></ul>
-                    </div>
-                    <input type="hidden" id="localidadLat" name="localidadLat">
-                    <input type="hidden" id="localidadLon" name="localidadLon">
-                    <input type="hidden" id="localidadCP" name="localidadCP">
+                        <!-- Rol -->
+                        <div class="mb-3">
+                            <label class="form-label">Rol</label>
+                            <div class="d-flex gap-2">
+                                <button type="button" class="role-btn btn btn-outline-primary"
+                                    id="btnCliente">Cliente</button>
+                                <button type="button" class="role-btn btn btn-outline-secondary"
+                                    id="btnBarbero">Barbero</button>
+                            </div>
+                            <input type="hidden" name="rol" id="rolInput" required>
+                        </div>
 
-                    <!-- Calle -->
-                    <div class="mb-3 position-relative">
-                        <label class="form-label">Calle</label>
-                        <input type="text" class="form-control" id="calle" name="calle" autocomplete="off" placeholder="Ej: Av San Martín" required>
-                        <ul id="suggestionsCalle" class="list-group position-absolute w-100" style="z-index:1000;"></ul>
-                    </div>
+                        <!-- Localidad -->
+                        <div class="mb-3 position-relative">
+                            <label class="form-label">Localidad</label>
+                            <input type="text" class="form-control" id="idLocalidad" name="idLocalidad"
+                                placeholder="Ej: Ciudadela" autocomplete="off" required>
+                            <ul id="suggestionsLocalidad" class="list-group position-absolute w-100"
+                                style="z-index:1000;"></ul>
+                        </div>
+                        <input type="hidden" id="localidadLat" name="localidadLat">
+                        <input type="hidden" id="localidadLon" name="localidadLon">
+                        <input type="hidden" id="localidadCP" name="localidadCP">
 
-                    <!-- Altura -->
-                    <div class="mb-3">
-                        <label class="form-label">Altura</label>
-                        <input type="number" class="form-control" id="altura" name="altura" placeholder="Ej: 1234" required>
-                    </div>
+                        <!-- Calle -->
+                        <div class="mb-3 position-relative">
+                            <label class="form-label">Calle</label>
+                            <input type="text" class="form-control" id="calleAltura" name="calleAltura"
+                                autocomplete="off" placeholder="Ej: Av San Martín 434" required>
+                            <ul id="suggestionsCalle" class="list-group position-absolute w-100" style="z-index:1000;">
+                            </ul>
+                        </div>
 
-                    <input type="hidden" id="direccionLat" name="direccionLat">
-                    <input type="hidden" id="direccionLon" name="direccionLon">
 
-                    <!-- Mapa -->
+                        <!-- Mapa
                     <div id="map"></div>
 
                     <div class="d-grid mt-3">
                         <button type="submit" class="btn btn-primary">Registrarme</button>
-                    </div>
-                </form>
+                    </div>-->
+                    </form>
+                </div>
             </div>
+            <div class="col-md-6 image-side"></div>
         </div>
-        <div class="col-md-6 image-side"></div>
     </div>
-</div>
 
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script>
-    let map, marcador;
 
-    document.addEventListener("DOMContentLoaded", function () {
-        map = L.map('map').setView([-34.670554, -58.562810], 13);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap'
-        }).addTo(map);
+    <script>
+        const input = document.getElementById("idLocalidad");
+        const lista = document.getElementById("suggestionsLocalidad");
 
-        // Click en mapa
-        map.on('click', function(e) {
-            const lat = e.latlng.lat;
-            const lon = e.latlng.lng;
+        let localidades = [];
 
-            if (marcador) map.removeLayer(marcador);
-            marcador = L.marker([lat, lon]).addTo(map);
+        fetch('/api/localidades')
+            .then(res => res.json())
+            .then(data => {
+                localidades = data || [];
 
-            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&addressdetails=1`)
-                .then(res => res.json())
-                .then(data => {
-                    if(data.address) {
-                        // Localidad
-                        if(data.address.city) localidadInput.value = data.address.city;
-                        else if(data.address.town) localidadInput.value = data.address.town;
-                        else if(data.address.village) localidadInput.value = data.address.village;
+                // Listener solo se agrega cuando las localidades ya están cargadas
+                input.addEventListener("input", () => {
+                    const valor = input.value.toLowerCase();
+                    lista.innerHTML = "";
 
-                        // Calle
-                        if(data.address.road) calleInput.value = data.address.road;
-
-                        // Altura
-                        if(data.address.house_number) document.getElementById("altura").value = data.address.house_number;
-
-                        // Código postal
-                        if(data.address.postcode) document.getElementById("localidadCP").value = data.address.postcode;
-
-                        // Coordenadas
-                        document.getElementById("direccionLat").value = lat.toFixed(6);
-                        document.getElementById("direccionLon").value = lon.toFixed(6);
-                        document.getElementById("localidadLat").value = lat.toFixed(6);
-                        document.getElementById("localidadLon").value = lon.toFixed(6);
+                    if (valor.length === 0) {
+                        lista.style.display = "none";
+                        return;
                     }
-                });
-        });
-    });
 
-    // Autocomplete Calle
-    const calleInput = document.getElementById("calle");
-    const suggestionsCalle = document.getElementById("suggestionsCalle");
-    let timeoutCalle;
+                    // Filtrar por cualquier parte del nombre
+                    const filtradas = localidades.filter(loc =>
+                        loc.nombre && loc.nombre.toLowerCase().includes(valor)
+                    );
 
-    calleInput.addEventListener("input", () => {
-        clearTimeout(timeoutCalle);
-        const localidad = localidadInput.value.trim();
-        const query = calleInput.value.trim();
-        if (query.length < 3 || !localidad) { suggestionsCalle.innerHTML = ""; return; }
-        timeoutCalle = setTimeout(() => {
-            fetch(`https://nominatim.openstreetmap.org/search?format=json&countrycodes=ar&limit=5&street=${encodeURIComponent(query)}&city=${encodeURIComponent(localidad)}`)
-                .then(res => res.json())
-                .then(data => {
-                    suggestionsCalle.innerHTML = "";
-                    data.forEach(place => {
+                    filtradas.forEach(loc => {
                         const li = document.createElement("li");
-                        li.className = "list-group-item";
-                        li.textContent = place.display_name.split(",")[0];
-                        li.onclick = () => {
-                            calleInput.value = place.display_name.split(",")[0];
-                            suggestionsCalle.innerHTML = "";
-                            map.setView([place.lat, place.lon], 18);
-                            if (marcador) map.removeLayer(marcador);
-                            marcador = L.marker([place.lat, place.lon]).addTo(map);
-                            document.getElementById("direccionLat").value = parseFloat(place.lat).toFixed(6);
-                            document.getElementById("direccionLon").value = parseFloat(place.lon).toFixed(6);
-                        };
-                        suggestionsCalle.appendChild(li);
+                        li.textContent = loc.nombre;
+                        li.classList.add("list-group-item");
+                        li.addEventListener("click", () => {
+                            input.value = loc.nombre;
+                            lista.style.display = "none";
+
+                            document.getElementById("localidadLat").value = loc.lat || '';
+                            document.getElementById("localidadLon").value = loc.lon || '';
+                            document.getElementById("localidadCP").value = loc.cp || '';
+                        });
+                        lista.appendChild(li);
                     });
+
+                    lista.style.display = filtradas.length > 0 ? "block" : "none";
                 });
-        }, 300);
-    });
-</script>
-<script th:src="@{/js/registro.js}"></script>
+
+            })
+            .catch(err => console.error("Error al cargar localidades:", err));
+
+    </script>
+
+
+    <!--<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>-->
+    <!--<script>-->
+    <!--    let map, marcador;-->
+
+    <!--    document.addEventListener("DOMContentLoaded", function () {-->
+    <!--        map = L.map('map').setView([-34.670554, -58.562810], 13);-->
+    <!--        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {-->
+    <!--            maxZoom: 19,-->
+    <!--            attribution: '© OpenStreetMap'-->
+    <!--        }).addTo(map);-->
+
+    <!--        // Click en mapa-->
+    <!--        map.on('click', function(e) {-->
+    <!--            const lat = e.latlng.lat;-->
+    <!--            const lon = e.latlng.lng;-->
+
+    <!--            if (marcador) map.removeLayer(marcador);-->
+    <!--            marcador = L.marker([lat, lon]).addTo(map);-->
+
+    <!--            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&addressdetails=1`)-->
+    <!--                .then(res => res.json())-->
+    <!--                .then(data => {-->
+    <!--                    if(data.address) {-->
+    <!--                        // Localidad-->
+    <!--                        if(data.address.city) localidadInput.value = data.address.city;-->
+    <!--                        else if(data.address.town) localidadInput.value = data.address.town;-->
+    <!--                        else if(data.address.village) localidadInput.value = data.address.village;-->
+
+    <!--                        // Calle-->
+    <!--                        if(data.address.road) calleInput.value = data.address.road;-->
+
+    <!--                        // Altura-->
+    <!--                        if(data.address.house_number) document.getElementById("altura").value = data.address.house_number;-->
+
+    <!--                        // Código postal-->
+    <!--                        if(data.address.postcode) document.getElementById("localidadCP").value = data.address.postcode;-->
+
+    <!--                        // Coordenadas-->
+    <!--                        document.getElementById("direccionLat").value = lat.toFixed(6);-->
+    <!--                        document.getElementById("direccionLon").value = lon.toFixed(6);-->
+    <!--                        document.getElementById("localidadLat").value = lat.toFixed(6);-->
+    <!--                        document.getElementById("localidadLon").value = lon.toFixed(6);-->
+    <!--                    }-->
+    <!--                });-->
+    <!--        });-->
+    <!--    });-->
+    <!--</script>-->
+
+
+    <script th:src="@{/js/registro.js}"></script>
 </body>
 
 </html>
