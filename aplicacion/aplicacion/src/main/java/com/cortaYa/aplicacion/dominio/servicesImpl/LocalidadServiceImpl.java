@@ -48,8 +48,8 @@ public class LocalidadServiceImpl implements LocalidadService {
     }
 
     @Override
-    public Localidad buscarPorId(Long localidadId) {
-        return localidadRepository.findById(localidadId)
+    public Localidad buscarPorId(Long idLocalidad) {
+        return localidadRepository.findById(idLocalidad)
                 .orElseThrow(() -> new RuntimeException("Localidad no encontrada"));
     }
 

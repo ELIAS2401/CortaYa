@@ -6,7 +6,7 @@ body {
     padding: 8px 0;
     /* menos padding vertical */
     background-color: black;
-    min-height: 100vh;
+    min-height: 150vh;
     position: relative;
     display: flex;
     align-items: center;
