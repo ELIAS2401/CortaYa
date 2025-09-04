@@ -2,9 +2,11 @@
 
 package com.cortaYa.aplicacion.infraestructura.api;
 
+import com.cortaYa.aplicacion.dominio.dtos.DireccionResponseDTO;
 import com.cortaYa.aplicacion.dominio.model.Localidad;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -17,7 +19,8 @@ import java.util.stream.Collectors;
 public class ApiDireccionClient {
 
     private final RestTemplate restTemplate = new RestTemplate();
-    private static final String BASE_URL = "https://apis.datos.gob.ar/georef/api/direcciones";
+    @Value("${spring.external.service.baseDirecciones-url}")
+    private String BASE_URL;
 
     public List<String> obtenerDirecciones(Localidad localidad, String query) {
         try {
@@ -26,7 +29,7 @@ public class ApiDireccionClient {
                     + "&localidad=" + URLEncoder.encode(localidad.getNombre(), StandardCharsets.UTF_8)
                     + "&max=20";
 
-            GeoRefResponse response = restTemplate.getForObject(url, GeoRefResponse.class);
+            DireccionResponseDTO response = restTemplate.getForObject(url, DireccionResponseDTO.class);
 
             if (response != null && response.getDirecciones() != null) {
                 return response.getDirecciones().stream()
@@ -45,37 +48,6 @@ public class ApiDireccionClient {
         }
 
         return List.of();
-    }
-
-
-    // ---- Clases internas para mapear la respuesta ----
-
-    @Data
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class GeoRefResponse {
-        private List<Direccion> direcciones;
-    }
-
-    @Data
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class Direccion {
-        private Altura altura;
-        private Calle calle;
-    }
-
-    @Data
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class Altura {
-        private Integer valor;
-        private String unidad;
-    }
-
-    @Data
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class Calle {
-        private String id;
-        private String nombre;
-        private String categoria;
     }
 
 }
