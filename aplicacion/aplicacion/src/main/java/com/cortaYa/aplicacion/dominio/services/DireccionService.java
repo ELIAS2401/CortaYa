@@ -1,9 +1,10 @@
 package com.cortaYa.aplicacion.dominio.services;
 
 import com.cortaYa.aplicacion.dominio.model.Direccion;
+import com.cortaYa.aplicacion.dominio.model.Localidad;
 
-public interface DireccionService {
-    Direccion buscarDireccion(Double direccionLat, Double direccionLon);
+import java.util.List;
 
-    void registrarDireccion(Direccion direccionCliente);
+public interface DireccionService  {
+    List<String> obtenerDireccionesDeTalLocalidad(Localidad localidad, String query);
 }

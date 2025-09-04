@@ -2,6 +2,7 @@ package com.cortaYa.aplicacion.infraestructura.api;
 
 import com.cortaYa.aplicacion.dominio.dtos.LocalidadDTO;
 import com.cortaYa.aplicacion.dominio.dtos.LocalidadResponseDTO;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,7 +15,8 @@ import java.util.List;
 public class ApiLocalidadClient {
 
     private final RestTemplate restTemplate = new RestTemplate();
-    private static final String BASE_URL = "https://apis.datos.gob.ar/georef/api/localidades";
+    @Value("${spring.external.service.baseLocalidades-url}")
+    private String BASE_URL;
 
     // Lista de partidos del AMBA
     private static final String[] AMBA_PARTIDOS = {

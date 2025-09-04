@@ -36,12 +36,4 @@ public class Localidad {
     public Localidad(String nombre) {
         this.nombre = nombre;
     }
-
-    public LocalidadDTO toDTO() {
-        return new LocalidadDTO(this.idLocalidad, this.nombre);
-    }
-
-    public static Localidad fromDTO(LocalidadDTO localidadDTO) {
-        return new Localidad(localidadDTO.getNombre());
-    }
 }

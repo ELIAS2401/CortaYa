@@ -1,6 +1,7 @@
 package com.cortaYa.aplicacion.dominio.servicesImpl;
 
 import com.cortaYa.aplicacion.dominio.dtos.LocalidadDTO;
+import com.cortaYa.aplicacion.dominio.dtos.LocalidadMapper;
 import com.cortaYa.aplicacion.dominio.model.Localidad;
 import com.cortaYa.aplicacion.dominio.repositories.LocalidadRepository;
 import com.cortaYa.aplicacion.dominio.services.LocalidadService;
@@ -29,14 +30,14 @@ public class LocalidadServiceImpl implements LocalidadService {
     public List<LocalidadDTO> obtenerTodasLasLocalidades() {
         List<LocalidadDTO> localidades = localidadRepository.findAll()
                 .stream()
-                .map(Localidad::toDTO) // si tenés entidad Localidad
+                .map(LocalidadMapper::toDTO)// si tenés entidad Localidad
                 .toList();
 
         if (localidades.isEmpty()) {
             // si no hay datos en la DB, traemos de la API y guardamos
             localidades = apiLocalidadClient.obtenerLocalidadesAMBA();
             localidadRepository.saveAll(
-                    localidades.stream().map(Localidad::fromDTO).toList()
+                    localidades.stream().map(LocalidadMapper::fromDTO).toList()
             );
         }
 
