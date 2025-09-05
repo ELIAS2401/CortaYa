@@ -64,6 +64,7 @@ body {
     height: 160px;
     position: relative;
     bottom: 10px;
+    margin-left: 120px;
 }
 
 
@@ -74,6 +75,8 @@ body {
     height: 70px;
     width: 70px;
     border-radius: 50%;
+    margin-right:120px;
+
 }
 
 /*--------------------------*/
@@ -204,8 +207,7 @@ footer ul li{
 
 .align-items-center {
     align-items: start !important;
-        margin-left: 120px;
-    margin-right:120px;
+
     }
     .carousel-item {
       transition: transform 1.2s ease-in-out; /* más lento y fluido */
@@ -218,10 +220,59 @@ height:800px;
 background-color:grey;
 display:flex;
 justify-content:space-around;
+background: linear-gradient(to right, #ffffff 10%, #b0b0b0 100%);
+
 }
 .seccion-Descripcion-texto{
 width:900px;
+color:black;
+display:flex;
+flex-direction:column;
+align-items:center;
+margin-top: 30px;
 }
-.seccion-Descripcion-imagen{
-width:300px;
+
+
+.parrafo-Segundaseccion::after {
+    content: "";
+    display: block;
+    width: 60%;        /* ocupa todo el ancho del contenedor */
+    height: 1px;       /* alto del bloque, ajustalo a tu gusto */
+    background-color: black;
+      margin: 60px auto 0 auto; 
+
+}
+
+
+.seccion-Descripcion-texto img{
+        padding:3%;
+}
+
+.titulo-Segundaseccion{
+margin-top: 80px;
+text-align:center;
+}
+.parrafo-Segundaseccion {
+    margin-top: 50px;
+    margin-bottom: 1rem;
+    padding:7%;
+    height: 30%;
+}
+.seccion-Descripcion-imagen {
+    width: 150px;
+    background: linear-gradient(to bottom, #0072d3 50%, #ffffff 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.seccion-Descripcion-imagen img {
+
+    position: relative; /* para que quede por delante del fondo */
+    z-index: 1;
+    left:10px
+    max-width: 300%;
+    height: 88%;
+
 }
