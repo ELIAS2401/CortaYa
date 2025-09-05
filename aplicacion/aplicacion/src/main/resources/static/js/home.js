@@ -41,5 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             cartas.classList.add("visible");
         }, 300); // retardo de 0.3s
-    }
+    };
+
 });
