@@ -3,6 +3,7 @@ body {
     position: relative;
     overflow-x: hidden;
     font-family: 'Segoe UI', sans-serif;
+        font-size: 20px;
 }
 .fixed-header {
   position: fixed;
@@ -36,13 +37,16 @@ body {
     transform: translateY(-100%);
   }
 }
+
+/*--------------HEADER---------*/
 #mainHeader {
     height: 80px;
     background-color: #212529; /* o el color que uses */
 }
 .gap-3 {
-    margin-top: 20px;
-    gap: 1rem !important;
+    margin-top: 40px;
+    gap: 2rem !important;
+    font-size: 20px;
 }
 
 .d-flex {
@@ -57,35 +61,60 @@ body {
 }
 /* Logo arriba a la izquierda */
 .logo {
-    height: 100px;
+    height: 160px;
     position: relative;
     bottom: 10px;
 }
-/* Imagen perfil arriba a la derecha */
+
+
+    /* foto perfil*/
 .perfil-img {
-    height: 40px;
-    width: 40px;
+    position: relative;
+    bottom: 15px;
+    height: 70px;
+    width: 70px;
     border-radius: 50%;
 }
+
+/*--------------------------*/
+
+
+/* texto central - slogan*/
+.fw-bold{
+    font-weight: 900!important;}
+
 
 /* Imagen central: bandera */
 .bandera {
     height: 200px;
+        margin-top: 100px;
+
 }
 
-/* Imagen fija abajo a la izquierda */
 .cartas {
-    position: fixed;
-    top: 280px;
-    left: -60px;
-    height: 250px;
+  position: fixed;
+  bottom: 0px;
+  height: 250px;
+  transform: translateX(-150%); /* empieza fuera de la pantalla */
+  opacity: 0;
+  transition: transform 1s ease-out, opacity 1s ease-out;
 }
+
+.cartas.visible {
+  transform: translateX(0); /* posición final */
+  opacity: 1;
+}
+
 .btn-primary{
 font-weight: bold;}
 
 .mb-4{
 margin-bottom: 0rem!important;
 }
+
+
+
+/*--------------FOOTER----------------*/
 
 footer{
   background-color: #212529;
@@ -155,6 +184,7 @@ footer ul li{
 /* top titulo modificado. viene x bootstrap*/
 .mt-5 {
   margin-top: 0 !important;
+  height: 850px;
 }
 .carousel
  {
@@ -165,18 +195,11 @@ footer ul li{
 
 .align-items-center {
     align-items: start !important;
-    margin-right:10px;
+        margin-left: 120px;
+    margin-right:120px;
     }
     .carousel-item {
       transition: transform 1.2s ease-in-out; /* más lento y fluido */
     }
 
-    /* foto perfil*/
-.perfil-img {
-    position: relative;
-    bottom: 5px;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-}
 
