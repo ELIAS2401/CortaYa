@@ -1,12 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // ----- HEADER -----
     const header = document.getElementById("mainHeader");
     const headerHeight = header.offsetHeight;
     let isFixed = false;
     let placeholder = null;
 
-    const handleScroll = () => {
-        const scrollY = window.scrollY;
-
+    const setHeaderFixedState = (scrollY) => {
         if (scrollY > headerHeight && !isFixed) {
             placeholder = document.createElement("div");
             placeholder.className = "header-placeholder";
@@ -18,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
             isFixed = true;
         } else if (scrollY <= headerHeight && isFixed) {
             header.classList.add("slide-up");
-
             header.addEventListener("animationend", function handler() {
                 header.classList.remove("fixed-header", "slide-up");
 
@@ -33,14 +31,49 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    window.addEventListener("scroll", handleScroll);
-
-    // 👉 Animación cartas al cargar
+    // ----- CARTAS -----
     const cartas = document.querySelector(".cartas");
-    if (cartas) {
-        setTimeout(() => {
+    const carousel = document.getElementById("carouselExample");
+    if (!cartas || !carousel) return;
+
+    let lastScrollY = window.scrollY;
+
+    const updateCartasVisibility = () => {
+        const scrollY = window.scrollY;
+
+        const headerBottom = header.getBoundingClientRect().bottom + scrollY;
+        const carouselTop = carousel.getBoundingClientRect().top + scrollY;
+
+        // Si la ventana está completamente por encima del carousel
+        if (scrollY + window.innerHeight <= carouselTop) {
+            // Mostrar cartas
+            cartas.classList.remove("ocultas");
             cartas.classList.add("visible");
-        }, 300); // retardo de 0.3s
+        } else if (scrollY >= headerBottom) {
+            // Ocultar cartas
+            cartas.classList.add("ocultas");
+            cartas.classList.remove("visible");
+        }
+
+        lastScrollY = scrollY;
     };
 
+    // Inicializar cartas según la posición inicial
+    window.requestAnimationFrame(() => {
+        setHeaderFixedState(window.scrollY);
+        updateCartasVisibility();
+    });
+
+    // Detectar scroll
+    window.addEventListener("scroll", () => {
+        setHeaderFixedState(window.scrollY);
+        updateCartasVisibility();
+    });
+
+    // Animación de entrada de izquierda a derecha solo al cargar si la página está arriba
+    if (window.scrollY === 0) {
+        setTimeout(() => {
+            cartas.classList.add("visible");
+        }, 300);
+    }
 });
