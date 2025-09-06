@@ -21,6 +21,5 @@ public class LocalidadController {
     @GetMapping("/localidades")
     public List<LocalidadDTO> obtenerLocalidades() {
         return localidadService.obtenerTodasLasLocalidades();
-
     }
 }

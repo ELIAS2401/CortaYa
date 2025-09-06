@@ -6,6 +6,7 @@ import com.cortaYa.aplicacion.dominio.model.Localidad;
 import com.cortaYa.aplicacion.dominio.repositories.LocalidadRepository;
 import com.cortaYa.aplicacion.dominio.services.LocalidadService;
 import com.cortaYa.aplicacion.infraestructura.api.ApiLocalidadClient;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,14 +15,11 @@ import java.util.Optional;
 
 @Transactional
 @Service
+@RequiredArgsConstructor
 public class LocalidadServiceImpl implements LocalidadService {
     private final LocalidadRepository localidadRepository;
     private final ApiLocalidadClient apiLocalidadClient;
 
-    public LocalidadServiceImpl(LocalidadRepository localidadRepository, ApiLocalidadClient apiLocalidadClient){
-        this.localidadRepository=localidadRepository;
-        this.apiLocalidadClient = apiLocalidadClient;
-    }
     public List<Localidad> buscarPorNombre(String nombre) {
         return localidadRepository.findByNombreContainingIgnoreCase(nombre);
     }

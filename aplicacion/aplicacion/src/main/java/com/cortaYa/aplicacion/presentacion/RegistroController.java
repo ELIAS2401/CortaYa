@@ -1,14 +1,12 @@
 package com.cortaYa.aplicacion.presentacion;
 
-
-import com.cortaYa.aplicacion.dominio.dtos.LocalidadDTO;
-import com.cortaYa.aplicacion.dominio.model.Direccion;
-import com.cortaYa.aplicacion.dominio.model.Localidad;
-import com.cortaYa.aplicacion.dominio.model.Usuario;
+import com.cortaYa.aplicacion.dominio.dtos.UsuarioDTO;
+import com.cortaYa.aplicacion.dominio.exceptions.EmailRegistradoException;
+import com.cortaYa.aplicacion.dominio.model.*;
 import com.cortaYa.aplicacion.dominio.services.DireccionService;
 import com.cortaYa.aplicacion.dominio.services.LocalidadService;
-import com.cortaYa.aplicacion.dominio.services.RegistroService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.cortaYa.aplicacion.dominio.services.UsuarioService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
@@ -19,61 +17,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-
 @Controller
+@AllArgsConstructor
 public class RegistroController {
 
-    private RegistroService registroService;
     private LocalidadService localidadService;
     private DireccionService direccionService;
-
-    @Autowired
-    public RegistroController(RegistroService registroService, LocalidadService localidadService, DireccionService direccionService) {
-        this.registroService = registroService;
-        this.localidadService = localidadService;
-        this.direccionService = direccionService;
-    }
+    private UsuarioService usuarioService;
 
     @RequestMapping("/registro")
     public ModelAndView viewRegistro() {
         ModelMap model = new ModelMap();
-        model.addAttribute("usuario", new Usuario());
+        model.addAttribute("usuarioDTO", new UsuarioDTO());
         return new ModelAndView("registro", model);
     }
 
-//    @PostMapping("/procesarRegistro")
-//    public String procesarRegistro(@ModelAttribute Usuario usuario, @RequestParam String rol,
-//                                   @RequestParam String calle,
-//                                   @RequestParam Long localidadId,
-//                                   @RequestParam Integer altura,
-//                                   @RequestParam Double direccionLat,
-//                                   @RequestParam Double direccionLon,
-//                                   @RequestParam(required = false) String localidadCP,
-//                                   Model model) {
-//
-//                Localidad localidadCliente = localidadService.buscarPorId(localidadId);
-//
-//        usuario.setLocalidad(localidadCliente);
-//
-//        Direccion direccionCliente = direccionService.buscarDireccion(direccionLat, direccionLon);
-//        if (direccionCliente == null) {
-//            direccionCliente = new Direccion(calle, altura, localidadCliente);
-//            direccionService.registrarDireccion(direccionCliente);
-//        }
-//        usuario.setDireccion(direccionCliente);
-//
-//        try {
-//            if ("Cliente".equalsIgnoreCase(rol)) {
-//                registroService.registrarCliente(usuario.getNombre(), usuario.getContrasenia(), usuario.getEmail(), usuario.getNroCelular(), usuario.getLocalidad(), usuario.getDireccion());
-//            } else if ("Barbero".equalsIgnoreCase(rol)) {
-//                registroService.registrarBarbero(usuario.getNombre(), usuario.getContrasenia(), usuario.getEmail(), usuario.getNroCelular(), usuario.getLocalidad(), usuario.getDireccion());
-//            }
-//            return "redirect:/login?RegistroSuccessful";
-//        } catch (Exception e) {
-//            model.addAttribute("error", e.getMessage());
-//            return "registro";
-//        }
-//    }
+    @PostMapping("/procesarRegistro")
+    public String procesarRegistro(@ModelAttribute UsuarioDTO usuarioDTO, Model model) {
+
+        System.out.println("usuario dto: " + usuarioDTO);
+
+        try {
+            if ("Cliente".equalsIgnoreCase(usuarioDTO.getRol())) {
+                usuarioService.registrarCliente(usuarioDTO);
+            } else if ("Barbero".equalsIgnoreCase(usuarioDTO.getRol())) {
+                usuarioService.registrarBarbero(usuarioDTO);
+            }
+            return "redirect:/login?RegistroSuccessful";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "registro";
+        }
+    }
 
 }

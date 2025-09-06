@@ -1,18 +1,25 @@
 package com.cortaYa.aplicacion.dominio.model;
 
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 import java.util.Map;
 
+@Data
+@NoArgsConstructor
+@SuperBuilder
+@EqualsAndHashCode(callSuper = true)
 @Entity
-public class UsuarioBarber extends UsuarioCliente {
+public class UsuarioBarber extends Usuario {
     private Integer puntuacionPromedio;
+    private Double precioPorKilometro;
     @ElementCollection
     private List<Pago> pagosRecibidos;
-    private Double precioPorKilometro;
     @OneToMany
     private List<TipoDeServicio> serviciosOfrecidos;
     @ElementCollection

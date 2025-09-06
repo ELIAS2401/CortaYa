@@ -15,7 +15,7 @@ btnBarbero.addEventListener("click", () => {
 });
 
 // Elementos del DOM
-const inputLocalidad = document.getElementById("idLocalidad");
+const inputLocalidad = document.getElementById("localidad");
 const listaLocalidad = document.getElementById("suggestionsLocalidad");
 const inputCalle = document.getElementById("calleAltura");
 const listaCalle = document.getElementById("suggestionsCalle");
@@ -54,6 +54,7 @@ inputLocalidad.addEventListener("input", () => {
             inputLocalidad.value = loc.nombre;
             listaLocalidad.style.display = "none";
 
+            document.getElementById("idLocalidad").value = loc.idLocalidad; // <-- esto es lo nuevo
             document.getElementById("localidadLat").value = loc.lat || '';
             document.getElementById("localidadLon").value = loc.lon || '';
             document.getElementById("localidadCP").value = loc.cp || '';

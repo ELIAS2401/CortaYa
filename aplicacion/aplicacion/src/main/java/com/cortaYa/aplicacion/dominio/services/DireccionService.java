@@ -5,6 +5,8 @@ import com.cortaYa.aplicacion.dominio.model.Localidad;
 
 import java.util.List;
 
-public interface DireccionService  {
+public interface DireccionService {
     List<String> obtenerDireccionesDeTalLocalidad(Localidad localidad, String query);
+
+    Direccion crearNuevaDireccion(String calleAltura, Long idLocalidad);
 }
