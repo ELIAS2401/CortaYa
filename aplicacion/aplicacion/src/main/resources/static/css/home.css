@@ -239,7 +239,7 @@ margin-top: 30px;
     width: 60%;        /* ocupa todo el ancho del contenedor */
     height: 1px;       /* alto del bloque, ajustalo a tu gusto */
     background-color: black;
-      margin: 60px auto 0 auto; 
+      margin: 60px auto 0 auto;
 
 }
 
@@ -276,3 +276,13 @@ text-align:center;
     height: 88%;
 
 }
+
+/*---------------TERCERA SECCION ------------------*/
+
+.seccion-informacion{display:flex;}
+.seccion-informacion-imagen{width:50%;}
+.seccion-informacion-textos{color:black;background-color:white;}
+.seccion-informacion-textos h2{margin-top:40px; text-align:center;}
+.seccion-informacion-textos h5{margin-top:10px;}
+.seccion-informacion-textos ul{margin-left:30px;padding:55px;}
+.logo-fernet{ height:200px;width:200px;margin-left:730px;}
