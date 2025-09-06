@@ -15,6 +15,11 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   animation: slideDown 0.4s ease-in-out;
 }
+.titulo-central{  font-family: "Playfair Display", serif;
+                  font-optical-sizing: auto;
+                  font-weight: 534;
+                  font-style: normal;
+                  margin-bottom:20px;}
 
 .slide-up {
   animation: slideUp 0.4s ease-in-out;
@@ -90,7 +95,7 @@ background-color:white;
 /* Imagen central: bandera */
 .bandera {
     height: 200px;
-        margin-top: 150px;
+        margin-top: 100px;
 
 }
 .cartas {
@@ -280,10 +285,119 @@ text-align:center;
 
 /*---------------TERCERA SECCION ------------------*/
 
-.seccion-informacion{display:flex;}
+.seccion-informacion{display:flex;
+height:800px;}
 .seccion-informacion-imagen{width:50%;}
 .seccion-informacion-textos{color:black;background-color:white;}
 .seccion-informacion-textos h2{margin-top:40px; text-align:center;}
 .seccion-informacion-textos h5{margin-top:10px;}
 .seccion-informacion-textos ul{margin-left:30px;padding:55px;}
 .logo-fernet{ height:200px;width:200px;margin-left:730px;}
+
+/*------ SECCIÓN SERVICIOS ------*/
+.seccion-servicios {
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* Contenedor de los botones */
+.nav-seleccion-servicio ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 30px 0;
+}
+
+/* Estilo de cada botón */
+.nav-seleccion-servicio li {
+  cursor: pointer; 
+    color:black;
+    background-color: #fff;
+    border-radius: 25px;
+    padding: 10px 25px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+}
+
+/* Texto dentro de los botones */
+.nav-seleccion-servicio li a {
+    text-decoration: none;
+    font-size: 15px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+/* Efecto hover: cambia color y eleva botón */
+.nav-seleccion-servicio li:hover {
+    background-color: #0d6efd;
+    transform: translateY(-3px);
+}
+
+.nav-seleccion-servicio li:hover a {
+    color: #fff;
+}
+
+/* Estado activo — botón seleccionado */
+.nav-seleccion-servicio li a.activo {
+    background-color: #0d6efd;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 25px;
+    box-shadow: 0px 4px 12px rgba(13, 110, 253, 0.5);
+}
+
+
+.servicio-elegido {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* Espacio entre la descripción y la imagen */
+    margin-top: 30px;
+    padding: 30px;
+    background-color: #f5f5f5; /* Fondo gris claro */
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Columna izquierda: texto */
+
+.info-seccion-elegida h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #111;
+}
+
+.info-seccion-elegida p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+/* Columna derecha: imagen */
+.servicio-elegido img {
+    flex: 1;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive para pantallas chicas */
+@media (max-width: 768px) {
+    .servicio-elegido {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .servicio-elegido img {
+        margin-top: 20px;
+        width: 90%;
+    }
+}

@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="/css/home.css">
     <link rel="shortcut icon" href="/img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,534;1,534&display=swap" rel="stylesheet">
 </head>
 <body class="bg-dark text-white">
 
@@ -20,6 +22,8 @@
     <div class="d-flex align-items-center gap-3">
         <span>Soy facha</span>
         <span>Modo barber</span>
+        <span>Iniciar sesion</span>
+
         <img src="/img/perfil.png" alt="Perfil" class="perfil-img">
     </div>
 </header>
@@ -29,7 +33,7 @@
 
     <div class="text-center mt-5">
         <img src="/img/bandera.png" alt="Bandera" class="bandera mb-4">
-
+        <h1 class="titulo-central">CORTA YA</h1>
         <h2 class="fw-bold">Tu corte donde estés. Rápido, simple y a domicilio</h2>
         <p class="text-light">Encontrá barberos cerca tuyo, reservá tu turno online y recibí el corte en casa</p>
 
@@ -106,8 +110,35 @@
                 <p> Relájate y disfruta de la experiencia de belleza en la comodidad de tu hogar.</p>
             </li>
         </ul>
-        <div > <img src="/img/fernet.png" alt="fernet" class="logo-fernet"></div>
+        <div><img src="/img/fernet.png" alt="fernet" class="logo-fernet"></div>
     </div>
+</div>
+
+<div class="seccion-servicios">
+    <div class="seccion-servicios-titulo">
+        <h2>Servicios disponibles</h2>
+    </div>
+    <div class="nav-subtitulo-servicios">
+<p>Los barberos a domicilio ofrecen una amplia gama de servicios de belleza y cuidado personal. Algunos de los más populares incluyen:</p>
+    </div>
+    <div class="nav-seleccion-servicio">
+        <ul>
+            <li><a data-servicio="adultx"><h5>Corte adultx</h5></a></li>
+            <li><a data-servicio="nini"><h5>Corte para niñe</h5></a></li>
+            <li><a data-servicio="barba"><h5>Afeitado barba</h5></a></li>
+            <li><a data-servicio="tinte"><h5>Coloración y tinte</h5></a></li>
+        </ul>
+    </div>
+<div class="servicio-elegido">
+
+    <div class="info-seccion-elegida">
+        <h3 id="titulo-servicio">Corte elegido</h3>
+        <p id="descripcion-servicio">Seleccioná un servicio para ver la descripción.</p>
+    </div>
+    <div>
+        <img id="imagen-servicio" src="/img/tipoDeCorte/pelado.jpg" alt="corte de pelo">
+    </div>
+</div>
 </div>
 
 
