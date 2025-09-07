@@ -1,6 +1,7 @@
 package com.cortaYa.aplicacion.presentacion;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -11,13 +12,13 @@ public class HomeController {
     public ModelAndView viewHome(){
         return new ModelAndView("home");
     }
-    @RequestMapping("/homeBarber")
+    @GetMapping("/barbero/home")
     public ModelAndView viewHomeBarber(){
-        return new ModelAndView("homeBarber");
+        return new ModelAndView("/barbero/home");
     }
-    @RequestMapping("/homeClient")
+    @RequestMapping("cliente/home")
     public ModelAndView viewHomeClient(){
-        return new ModelAndView("homeClient");
+        return new ModelAndView("/cliente/home");
     }
 
 

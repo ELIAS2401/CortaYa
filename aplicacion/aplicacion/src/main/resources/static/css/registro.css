@@ -1,4 +1,6 @@
-body {
+body,
+html {
+    height: 100%;
     margin: 0;
 }
 
@@ -6,7 +8,7 @@ body {
     padding: 8px 0;
     /* menos padding vertical */
     background-color: black;
-    min-height: 150vh;
+    min-height: 100vh;
     position: relative;
     display: flex;
     align-items: center;
@@ -25,16 +27,18 @@ body {
     border-radius: 15px;
     padding: 20px;
     /* menos padding */
-   /* width: 100%;
+/* width: 100%;
     max-width: 500px;
      más pequeño } */
+
 .form-box {
     background-color: white;
     border-radius: 15px;
     padding: 20px;
     width: 100%;
     max-width: 500px;
-    overflow: hidden; /* evita que algo sobresalga */
+    overflow: hidden;
+    /* evita que algo sobresalga */
 }
 
 .form-control {
@@ -95,15 +99,11 @@ h4 {
     margin-bottom: 0.7rem !important;
 }
 
-body,
-html {
-    height: 120vh;
-    /* overflow-y: hidden; */
-}
-
 #map {
-    margin: 0 auto; /* centrado horizontal */
-    display: block; /* necesario para que el margin funcione */
+    margin: 0 auto;
+    /* centrado horizontal */
+    display: block;
+    /* necesario para que el margin funcione */
     width: auto !important;
 }
 
@@ -111,7 +111,8 @@ html {
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100%; /* ahora tomará el ancho del input */
+    width: 100%;
+    /* ahora tomará el ancho del input */
     z-index: 1000;
     max-height: 200px;
     overflow-y: auto;

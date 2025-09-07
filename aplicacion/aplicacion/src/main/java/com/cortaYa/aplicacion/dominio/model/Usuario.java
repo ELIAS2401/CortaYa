@@ -1,5 +1,6 @@
 package com.cortaYa.aplicacion.dominio.model;
 
+import com.cortaYa.aplicacion.dominio.enums.RolEnum;
 import com.fasterxml.jackson.annotation.JsonTypeId;
 import jakarta.persistence.*;
 import lombok.*;
@@ -28,6 +29,7 @@ public class Usuario{
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_direccion")
     private Direccion direccion;
+    private RolEnum rol;
     @OneToMany
     private List<Reserva> reservas;
 

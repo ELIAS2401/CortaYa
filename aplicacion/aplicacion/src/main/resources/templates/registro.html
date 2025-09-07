@@ -26,7 +26,7 @@
             <img src="/img/logo.png" alt="Logo" class="logo">
             <div class="form-box">
                 <h4 class="fw-bold text-center mb-4">Registrate en CortaYa</h4>
-                <form th:action="@{/procesarRegistro}" th:object="${usuarioDTO}" method="post">
+                <form th:action="@{/procesarRegistro}" th:object="${usuarioDTO}" method="post" th:csrf="true">
 
                     <!-- Datos personales -->
                     <div class="mb-3">

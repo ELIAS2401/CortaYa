@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @AllArgsConstructor
@@ -33,17 +34,21 @@ public class RegistroController {
     }
 
     @PostMapping("/procesarRegistro")
-    public String procesarRegistro(@ModelAttribute UsuarioDTO usuarioDTO, Model model) {
+    public String procesarRegistro(@ModelAttribute UsuarioDTO usuarioDTO, Model model, RedirectAttributes redirectAttributes) {
 
         System.out.println("usuario dto: " + usuarioDTO);
 
         try {
             if ("Cliente".equalsIgnoreCase(usuarioDTO.getRol())) {
                 usuarioService.registrarCliente(usuarioDTO);
+                System.out.println("se va a registrar ---------------------------------------------");
             } else if ("Barbero".equalsIgnoreCase(usuarioDTO.getRol())) {
                 usuarioService.registrarBarbero(usuarioDTO);
             }
-            return "redirect:/login?RegistroSuccessful";
+            redirectAttributes.addAttribute("RegistroSuccessful", true);
+            redirectAttributes.addAttribute("nombre", usuarioDTO.getNombre());
+            System.out.println("antes de return -------------------------------------------------");
+            return "redirect:/login";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             return "registro";
