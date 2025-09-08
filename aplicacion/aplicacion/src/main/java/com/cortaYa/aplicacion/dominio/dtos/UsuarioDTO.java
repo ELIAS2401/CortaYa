@@ -14,6 +14,7 @@ public class UsuarioDTO {
     private String email;
     private Integer nroCelular;
     private String contrasenia;
+    private String confirmarContrasenia;
     private String rol;
     private String localidad;
     private Long idLocalidad;

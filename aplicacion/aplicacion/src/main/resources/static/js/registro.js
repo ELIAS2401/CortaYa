@@ -104,3 +104,53 @@ inputCalle.addEventListener("input", () => {
         })
         .catch(err => console.error("Error al cargar calles:", err));
 });
+
+// --- Validación de contraseña en tiempo real ---
+const passwordInput = document.getElementById("contrasenia");
+const confirmPasswordInput = document.getElementById("confirmarContrasenia");
+
+const passwordFeedback = document.createElement("div");
+passwordFeedback.classList.add("form-text");
+passwordInput.parentNode.appendChild(passwordFeedback);
+
+function validarPassword(password) {
+    const reglas = [
+        { regex: /.{8,}/, mensaje: "Mínimo 8 caracteres" },
+        { regex: /[A-Z]/, mensaje: "Al menos una mayúscula" },
+        { regex: /[0-9]/, mensaje: "Al menos un número" },
+        { regex: /[@$!%*?&]/, mensaje: "Al menos un caracter especial (@$!%*?&)" }
+    ];
+    return reglas.map(r => ({
+        mensaje: r.mensaje,
+        valido: r.regex.test(password)
+    }));
+}
+
+passwordInput.addEventListener("input", () => {
+    const resultados = validarPassword(passwordInput.value);
+    passwordFeedback.innerHTML = resultados
+        .map(r => r.valido ? `✅ ${r.mensaje}` : `❌ ${r.mensaje}`)
+        .join("<br>");
+});
+
+confirmPasswordInput.addEventListener("input", () => {
+    if (confirmPasswordInput.value !== passwordInput.value) {
+        confirmPasswordInput.setCustomValidity("Las contraseñas no coinciden");
+    } else {
+        confirmPasswordInput.setCustomValidity("");
+    }
+});
+
+// -- Validar nro celular --
+
+const celularInput = document.getElementById("nroCelular");
+
+celularInput.addEventListener("input", () => {
+    const regex = /^\+?\d{10,15}$/;
+    if (!regex.test(celularInput.value.replace(/\D/g, ''))) {
+        celularInput.setCustomValidity("Ingresá un número de celular válido (mínimo 10 dígitos)");
+    } else {
+        celularInput.setCustomValidity("");
+    }
+});
+

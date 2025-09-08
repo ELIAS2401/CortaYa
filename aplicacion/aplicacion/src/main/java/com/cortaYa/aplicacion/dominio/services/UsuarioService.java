@@ -12,4 +12,5 @@ public interface UsuarioService {
     void registrarBarbero(UsuarioDTO usuarioDTO) throws EmailRegistradoException, Exception;
 
     Optional<Usuario> obtenerUsuarioPorEmail(String email);
+    void validarPassword(String password, String confirmarPassword) throws Exception ;
 }
