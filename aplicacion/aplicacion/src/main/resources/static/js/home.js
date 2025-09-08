@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (scrollY + window.innerHeight <= carouselTop) {
             // Mostrar cartas
             cartas.classList.remove("ocultas");
+             void cartas.offsetWidth; // Reinicia animación
             cartas.classList.add("visible");
         } else if (scrollY >= headerBottom) {
             // Ocultar cartas
