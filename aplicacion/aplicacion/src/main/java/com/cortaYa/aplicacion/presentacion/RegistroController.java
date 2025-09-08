@@ -1,10 +1,12 @@
 package com.cortaYa.aplicacion.presentacion;
 
-
-import com.cortaYa.aplicacion.dominio.model.Localidad;
-import com.cortaYa.aplicacion.dominio.model.Usuario;
-import com.cortaYa.aplicacion.dominio.services.RegistroService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.cortaYa.aplicacion.dominio.dtos.UsuarioDTO;
+import com.cortaYa.aplicacion.dominio.exceptions.EmailRegistradoException;
+import com.cortaYa.aplicacion.dominio.model.*;
+import com.cortaYa.aplicacion.dominio.services.DireccionService;
+import com.cortaYa.aplicacion.dominio.services.LocalidadService;
+import com.cortaYa.aplicacion.dominio.services.UsuarioService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
@@ -14,37 +16,40 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+@AllArgsConstructor
 public class RegistroController {
 
-    private RegistroService registroService;
-
-    @Autowired
-    public RegistroController(RegistroService registroService) {
-        this.registroService = registroService;
-    }
+    private LocalidadService localidadService;
+    private DireccionService direccionService;
+    private UsuarioService usuarioService;
 
     @RequestMapping("/registro")
     public ModelAndView viewRegistro() {
         ModelMap model = new ModelMap();
-        model.addAttribute("usuario", new Usuario());
+        model.addAttribute("usuarioDTO", new UsuarioDTO());
         return new ModelAndView("registro", model);
     }
 
     @PostMapping("/procesarRegistro")
-    public String procesarRegistro(@ModelAttribute Usuario usuario, @RequestParam String rol, @RequestParam String localidadName,  Model model) {
-        Localidad newLocalidad = new Localidad(1L,localidadName,1403);
-        usuario.setLocalidad(newLocalidad);
+    public String procesarRegistro(@ModelAttribute UsuarioDTO usuarioDTO, Model model, RedirectAttributes redirectAttributes) {
+
         try {
-            if ("Cliente".equalsIgnoreCase(rol)) {
-                registroService.registrarCliente(usuario.getNombre(), usuario.getContrasenia(), usuario.getEmail(), usuario.getNroCelular(), usuario.getLocalidad());
-            } else if ("Barbero".equalsIgnoreCase(rol)){
-                registroService.registrarBarbero(usuario.getNombre(), usuario.getContrasenia(), usuario.getEmail(), usuario.getNroCelular(), usuario.getLocalidad());
+            if ("Cliente".equalsIgnoreCase(usuarioDTO.getRol())) {
+                usuarioService.registrarCliente(usuarioDTO);
+            } else if ("Barbero".equalsIgnoreCase(usuarioDTO.getRol())) {
+                usuarioService.registrarBarbero(usuarioDTO);
             }
-            return "redirect:/login?RegistroSuccessful";
+            redirectAttributes.addAttribute("RegistroSuccessful", true);
+            redirectAttributes.addAttribute("nombre", usuarioDTO.getNombre());
+            return "redirect:/login";
         } catch (Exception e) {
-            model.addAttribute("error", e.getMessage());
+            if (e.getClass().equals(EmailRegistradoException.class)){
+                model.addAttribute("errorMail", e.getMessage());
+            } else {
+            model.addAttribute("error", e.getMessage());}
             return "registro";
         }
     }

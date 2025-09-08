@@ -1,13 +1,9 @@
 package com.cortaYa.aplicacion.dominio.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -16,7 +12,13 @@ public class Direccion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDireccion;
     private String nombre;
-    private Integer nro;
+    private Integer altura;
     @ManyToOne
     private Localidad localidad;
+
+    public Direccion(String nombreCalle, Integer altura, Localidad localidad) {
+        this.nombre = nombreCalle;
+        this.altura = altura;
+        this.localidad = localidad;
+    }
 }

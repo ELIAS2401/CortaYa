@@ -1,4 +1,6 @@
-body {
+body,
+html {
+    height: 100%;
     margin: 0;
 }
 
@@ -25,16 +27,18 @@ body {
     border-radius: 15px;
     padding: 20px;
     /* menos padding */
-   /* width: 100%;
+/* width: 100%;
     max-width: 500px;
      más pequeño } */
+
 .form-box {
     background-color: white;
     border-radius: 15px;
     padding: 20px;
     width: 100%;
     max-width: 500px;
-    overflow: hidden; /* evita que algo sobresalga */
+    overflow: hidden;
+    /* evita que algo sobresalga */
 }
 
 .form-control {
@@ -95,8 +99,25 @@ h4 {
     margin-bottom: 0.7rem !important;
 }
 
-body,
-html {
-    height: 120vh;
-    /* overflow-y: hidden; */
+#map {
+    margin: 0 auto;
+    /* centrado horizontal */
+    display: block;
+    /* necesario para que el margin funcione */
+    width: auto !important;
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    /* ahora tomará el ancho del input */
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.d-grid {
+    margin-top: 10px
 }

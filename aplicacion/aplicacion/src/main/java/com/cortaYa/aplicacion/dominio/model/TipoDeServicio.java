@@ -20,5 +20,5 @@ public class TipoDeServicio {
     private Long idServicio;
     private String descripcion;
     private Double precio;
-    private Integer duraciónMinutos;
+    private Integer duracionMinutos;
 }

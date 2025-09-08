@@ -1,194 +1,167 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - CortaYa</title>
+    <link rel="icon" type="img/favicon.png" th:href="@{/img/favicon.png}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/css/registro.css}" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" th:href="@{/css/registro.css}"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
     <style>
         #map {
             height: 20em;
-            width: 20em;
+            width: 100%;
+        }
+
+        .list-group-item {
+            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
-    <div class="container-fluid p-0">
-        <div class="row g-0">
-            <!-- Lado izquierdo -->
-            <div class="col-md-6 left-side">
-                <img src="/img/logo.png" alt="Logo" class="logo">
-                <div class="form-box">
-                    <h4 class="fw-bold text-center mb-4">Registrate en CortaYa</h4>
-                    <form th:action="@{/procesarRegistro}" th:object="${usuario}" method="post">
-                        <div class="mb-3">
-                            <label class="form-label">Nombre</label>
-                            <input th:field="*{nombre}" type="text" class="form-control" placeholder="Ej: Pato Toranzo">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Email</label>
-                            <input th:field="*{email}" type="email" class="form-control"
-                                placeholder="Ej: pato@gmail.com">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Nro Celular</label>
-                            <input th:field="*{nroCelular}" type="text" class="form-control"
-                                placeholder="Ej: 011 1234 - 4567">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Contraseña</label>
-                            <input th:field="*{contrasenia}" type="password" class="form-control"
-                                placeholder="Al menos 8 caracteres">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Confirmar contraseña</label>
-                            <input type="password" class="form-control" placeholder="Confirma contraseña">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Rol</label>
-                            <div class="d-flex gap-2">
-                                <button type="button" class="role-btn" id="btnCliente">Cliente</button>
-                                <button type="button" class="role-btn" id="btnBarbero">Barbero</button>
-                            </div>
-                            <input type="hidden" name="rol" id="rolInput">
-                        </div>
+<div class="container-fluid p-0">
+    <div class="row g-0">
+        <div class="col-md-6 left-side">
+            <img src="/img/logo.png" alt="Logo" class="logo">
+            <div class="form-box">
+                <h4 class="fw-bold text-center mb-4">Registrate en CortaYa</h4>
+                <form th:action="@{/procesarRegistro}" th:object="${usuarioDTO}" method="post">
+                <!--th:csrf="true" consultar esto si es necesario-->
 
-                        <div class="mb-3">
-                            <label class="form-label">Dirección</label>
-                            <input type="text" class="form-control" id="direccion" name="localidadName"
-                                autocomplete="off">
-                            <!-- Contenedor para las sugerencias -->
-                            <ul id="suggestions" class="list-group position-absolute w-100" style="z-index: 1000;"></ul>
+                    <!-- Datos personales -->
+                    <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input th:field="*{nombre}" type="text" class="form-control" placeholder="Ej: Pato Toranzo"
+                               required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input th:field="*{email}" type="email" class="form-control"
+                               placeholder="Ej: pato@gmail.com" required>
+                    </div>
+                    <div th:if="${errorMail}" class="alert alert-danger" role="alert">
+                        <span th:text="${errorMail}"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nro Celular</label>
+                        <input th:field="*{nroCelular}" type="text" class="form-control"
+                               placeholder="Ej: 11 5678-1234"
+                               pattern="^(\+?\d{10,15})$"
+                               title="Ingresá un número de celular válido (mínimo 10 dígitos)"
+                               required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Contraseña</label>
+                        <input th:field="*{contrasenia}" type="password" class="form-control"
+                               placeholder="Al menos 8 caracteres" required>
+                        <div th:if="${error}" class="text-danger mt-1" th:text="${error}"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Confirmar contraseña</label>
+                        <input th:field="*{confirmarContrasenia}" type="password" class="form-control" placeholder="Confirma contraseña" required>
+                    </div>
+
+                    <!-- Rol -->
+                    <div class="mb-3">
+                        <label class="form-label">Rol</label>
+                        <div class="d-flex gap-2">
+                            <button type="button" class="role-btn btn btn-outline-primary" id="btnCliente">Cliente
+                            </button>
+                            <button type="button" class="role-btn btn btn-outline-secondary" id="btnBarbero">Barbero
+                            </button>
                         </div>
-                        <div id="map"></div>
-                        <input type="hidden" id="coordenadas" name="coordenadas">
-                        <div class="d-grid">
-                            <button type="submit" class="btn register-btn">Registrarme</button>
-                        </div>
-                    </form>
-                </div>
+                        <input th:field="*{rol}" type="hidden" name="rol" id="rolInput" required>
+                    </div>
+
+                    <!-- Localidad -->
+                    <div class="mb-3 position-relative">
+                        <label class="form-label">Localidad</label>
+                        <input th:field="*{localidad}" type="text" class="form-control" id="localidad" name="localidad"
+                               placeholder="Ej: Ciudadela" autocomplete="off" required>
+                        <ul id="suggestionsLocalidad" class="list-group position-absolute w-100"
+                            style="z-index:1000;"></ul>
+                    </div>
+                    <input th:field="*{idLocalidad}" type="hidden" id="idLocalidad" name="idLocalidad">
+                    <input type="hidden" id="localidadLat" name="localidadLat">
+                    <input type="hidden" id="localidadLon" name="localidadLon">
+                    <input type="hidden" id="localidadCP" name="localidadCP">
+
+                    <!-- Calle -->
+                    <div class="mb-3 position-relative">
+                        <label class="form-label">Calle y altura</label>
+                        <input th:field="*{calleAltura}" type="text" class="form-control" id="calleAltura" name="calleAltura"
+                               autocomplete="off"
+                               placeholder="Ej: Av San Martín 123"
+                               pattern="^[A-Za-zÀ-ÿ\s\.]+ \d+[A-Za-z0-9\-\/]*$"
+                               title="Ingresá la calle con altura, ej: Chiclana 123"
+                               required>
+                        <ul id="suggestionsCalle" class="list-group position-absolute w-100" style="z-index:1000;">
+                        </ul>
+                    </div>
+
+                    <!-- Boton Registrar -->
+                    <div class="d-grid mt-3">
+                        <button type="submit" class="btn btn-primary">Registrarme</button>
+                    </div>
+
+                    <!-- Mapa <div id="map"></div> -->
+                </form>
             </div>
-            <!-- Lado derecho -->
-            <div class="col-md-6 image-side"></div>
         </div>
+        <div class="col-md-6 image-side"></div>
     </div>
+</div>
+<!--<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>-->
+<!--<script>-->
+<!--    let map, marcador;-->
 
-    <!-- Autocompletado con Nominatim -->
-    <script>
-        const input = document.getElementById("direccion");
-        const suggestions = document.getElementById("suggestions");
-        let timeout;
-        let marcador; // compartido con el mapa
-        let map; // compartido con el mapa
+<!--    document.addEventListener("DOMContentLoaded", function () {-->
+<!--        map = L.map('map').setView([-34.670554, -58.562810], 13);-->
+<!--        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {-->
+<!--            maxZoom: 19,-->
+<!--            attribution: '© OpenStreetMap'-->
+<!--        }).addTo(map);-->
 
-        input.addEventListener("input", () => {
-            clearTimeout(timeout);
+<!--        // Click en mapa-->
+<!--        map.on('click', function(e) {-->
+<!--            const lat = e.latlng.lat;-->
+<!--            const lon = e.latlng.lng;-->
 
-            const query = input.value.trim();
-            if (query.length < 3) {
-                suggestions.innerHTML = "";
-                return;
-            }
+<!--            if (marcador) map.removeLayer(marcador);-->
+<!--            marcador = L.marker([lat, lon]).addTo(map);-->
 
-            timeout = setTimeout(() => {
-                fetch(`https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&countrycodes=ar&bounded=1&viewbox=-59.05,-34.25,-57.75,-35.25&q=${encodeURIComponent(query)}`)
-                    .then(res => res.json())
-                    .then(data => {
-                        suggestions.innerHTML = "";
-                        data.forEach(place => {
-                            const addr = place.address;
-                            const calle = addr.road || "";
-                            const numero = addr.house_number || "";
-                            const barrio = addr.neighbourhood || addr.suburb || "";
-                            const localidad = addr.city || addr.town || addr.village || "";
-                            const partido = addr.county || "";
+<!--            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&addressdetails=1`)-->
+<!--                .then(res => res.json())-->
+<!--                .then(data => {-->
+<!--                    if(data.address) {-->
+<!--                        // Localidad-->
+<!--                        if(data.address.city) localidadInput.value = data.address.city;-->
+<!--                        else if(data.address.town) localidadInput.value = data.address.town;-->
+<!--                        else if(data.address.village) localidadInput.value = data.address.village;-->
 
-                            let direccionCompleta = `${calle} ${numero}`;
-                            if (barrio) direccionCompleta += ` ${barrio}`;
-                            if (localidad && localidad !== barrio) direccionCompleta += ` ${localidad}`;
-                            if (partido && partido !== localidad) direccionCompleta += ` ${partido}`;
+<!--                        // Calle-->
+<!--                        if(data.address.road) calleInput.value = data.address.road;-->
 
-                            const li = document.createElement("li");
-                            li.className = "list-group-item list-group-item-action";
-                            li.textContent = direccionCompleta.trim();
-                            li.addEventListener("click", () => {
-                                input.value = direccionCompleta.trim();
-                                suggestions.innerHTML = "";
+<!--                        // Altura-->
+<!--                        if(data.address.house_number) document.getElementById("altura").value = data.address.house_number;-->
 
-                                // Mover mapa y poner marcador
-                                const lat = parseFloat(place.lat);
-                                const lon = parseFloat(place.lon);
-                                map.setView([lat, lon], 18);
-                                if (marcador) {
-                                    map.removeLayer(marcador);
-                                }
-                                marcador = L.marker([lat, lon]).addTo(map);
-                                document.getElementById('coordenadas').value = lat.toFixed(6) + ', ' + lon.toFixed(6);
-                            });
-                            suggestions.appendChild(li);
-                        });
-                    })
-                    .catch(err => console.error(err));
-            }, 300);
-        });
-    </script>
+<!--                        // Código postal-->
+<!--                        if(data.address.postcode) document.getElementById("localidadCP").value = data.address.postcode;-->
 
-    <!-- Mapa con Leaflet -->
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            map = L.map('map').setView([-34.670554, -58.562810], 13);
+<!--                        // Coordenadas-->
+<!--                        document.getElementById("direccionLat").value = lat.toFixed(6);-->
+<!--                        document.getElementById("direccionLon").value = lon.toFixed(6);-->
+<!--                        document.getElementById("localidadLat").value = lat.toFixed(6);-->
+<!--                        document.getElementById("localidadLon").value = lon.toFixed(6);-->
+<!--                    }-->
+<!--                });-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: '© OpenStreetMap'
-            }).addTo(map);
-
-            document.getElementById('coordenadas').value = "-34.670554, -58.562810";
-
-            map.on('click', function (e) {
-                let latlng = e.latlng;
-                document.getElementById('coordenadas').value = latlng.lat.toFixed(6) + ', ' + latlng.lng.toFixed(6);
-
-                if (marcador) {
-                    map.removeLayer(marcador);
-                }
-                marcador = L.marker(latlng).addTo(map);
-
-                // Reverse geocoding para obtener dirección
-                fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latlng.lat}&lon=${latlng.lng}&addressdetails=1`)
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data && data.address) {
-                            const addr = data.address;
-                            const calle = addr.road || "";
-                            const numero = addr.house_number || "";
-                            const barrio = addr.neighbourhood || addr.suburb || "";
-                            const localidad = addr.city || addr.town || addr.village || "";
-                            const partido = addr.county || "";
-
-                            let direccionCompleta = `${calle} ${numero}`;
-                            if (barrio) direccionCompleta += ` ${barrio}`;
-                            if (localidad && localidad !== barrio) direccionCompleta += ` ${localidad}`;
-                            if (partido && partido !== localidad) direccionCompleta += ` ${partido}`;
-
-                            document.getElementById("direccion").value = direccionCompleta.trim();
-                        }
-                    })
-                    .catch(err => console.error(err));
-            });
-        });
-    </script>
-
-    <script th:src="@{/js/registro.js}"></script>
+<script th:src="@{/js/registro.js}"></script>
 </body>
-</html>
 
-<!-- select de localidad (parque norte) relacionado al mapa y q te muestre esa localidad
-      input direccion (manualmente y seleccionar o hacer click en el mapa y te marque la calle y nro)
-      validar q tenga calle nro y localidad..
--->
+</html>
