@@ -133,10 +133,10 @@ background-color:white;
     transform: rotate(0deg);
   }
   70% {
-    transform: rotate(100deg); /* cae un poco de más */
+    transform: rotate(95deg); /* cae un poco de más */
   }
   85% {
-    transform: rotate(85deg);  /* rebote */
+    transform: rotate(88deg);  /* rebote */
   }
   100% {
     transform: rotate(90deg);  /* queda acostada */
