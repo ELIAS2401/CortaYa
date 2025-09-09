@@ -5,6 +5,7 @@ body {
     font-family: 'Segoe UI', sans-serif;
         font-size: 20px;
 }
+
 .fixed-header {
   position: fixed;
   top: 0;
@@ -47,6 +48,9 @@ body {
 #mainHeader {
     height: 80px;
     background-color: #212529; /* o el color que uses */
+}
+header a{    text-decoration:none;
+color:white;
 }
 .gap-3 {
     margin-top: 40px;
@@ -113,7 +117,7 @@ background-color:white;
 }
 
 .cartas.visible {
-  animation: entrada 1s ease-out forwards, caer 1.2s ease-in-out 2s forwards;
+  animation: entrada 0.8s ease-out forwards, caer 1s ease-in-out 2s forwards;
 }
 
 @keyframes entrada {
@@ -346,8 +350,7 @@ margin-top:30px;
 /* Estilo de cada botón */
 .nav-seleccion-servicio li {
   cursor: pointer;
-    color:black;
-    background-color: #fff;
+    background-color: #ab0202;
     border-radius: 25px;
     padding: 10px 25px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
@@ -398,6 +401,8 @@ margin-top:30px;
 }
 
 /* Columna izquierda: texto */
+
+.info-seccion-elegida{text-align:left;max-width:50%}
 
 .info-seccion-elegida h3 {
     font-size: 22px;
