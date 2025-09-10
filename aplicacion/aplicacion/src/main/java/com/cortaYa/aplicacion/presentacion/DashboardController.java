@@ -13,9 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class DashboardController {
 
-    @GetMapping("/panel-cliente")
-    public String mostrarDashboard(ModelMap model) {
+    @GetMapping("cliente/panel-cliente")
+    public ModelAndView mostrarDashboard(ModelMap model) {
        
-        return "dashboard-client"; 
+        return new ModelAndView("/cliente/dashboard-client");
     }
 }
