@@ -47,6 +47,7 @@ body {
 #mainHeader {
     height: 80px;
     background-color: #212529; /* o el color que uses */
+
 }
 .gap-3 {
     margin-top: 40px;
@@ -68,8 +69,7 @@ body {
 .logo {
     height: 160px;
     position: relative;
-    bottom: 10px;
-    margin-left: 120px;
+   top:25px;
 }
 
 
@@ -83,6 +83,15 @@ body {
     margin-right:120px;
 background-color:white;
 }
+
+/*nav.. al lado del perfil */
+
+.align-items-center {
+    align-items: center !important;
+    justify-content:space-around !important;
+gap:750px;
+    }
+
 
 /*--------------------------*/
 
@@ -129,76 +138,6 @@ font-weight: bold;}
 margin-bottom: 0rem!important;
 }
 
-
-
-/*--------------FOOTER----------------*/
-
-footer{
-height:400px;
-  background-color: #212529;
-  display:flex;
-  justify-content: space-evenly;
-  align-items: center;
-      height: 300px;
-
-}
-
-footer ul li{
-  list-style-type: none; }
-
-.auspiciantes {
-    text-align: center; /* centra el título */
-    margin: 20px 0;
-}
-
-.auspiciantes ul {
-    list-style: none; /* quita los puntos */
-    padding: 0;
-    margin: 10px 0 0 0;
-    display: flex !important; /* fuerza flex */
-    justify-content: center !important; /* fuerza centrado */
-    align-items: center; /* centra verticalmente si hay varios tamaños */
-    gap: 20px;
-}
-
-.auspiciantes li {
-    display: inline-block;
-}
-
-.auspiciantes i {
-    font-size: 2rem;
-    display: block;
-    margin: 0 auto; /* asegura centrado en cada li */
-}
-
-.redes {
-    text-align: center; /* centra el título */
-    margin: 20px 0;
-}
-
-.redes ul {
-    list-style: none; /* quita los puntos */
-    padding: 0;
-    margin: 10px 0 0 0;
-    display: flex !important; /* fuerza flex */
-    justify-content: center !important; /* fuerza centrado */
-    align-items: center; /* centra verticalmente si hay varios tamaños */
-    gap: 20px;
-}
-
-.redes li {
-    display: inline-block;
-}
-
-.redes i {
-    font-size: 2rem;
-    display: block;
-    margin: 0 auto; /* asegura centrado en cada li */
-}
-
-
-
-
 /* top titulo modificado. viene x bootstrap*/
 .mt-5 {
   margin-top: 0 !important;
@@ -209,13 +148,7 @@ footer ul li{
     margin-top: 40px;
 }
 
-/*nav.. al lado del perfil */
-
-.align-items-center {
-    align-items: start !important;
-
-    }
-    .carousel-item {
+   .carousel-item {
       transition: transform 1.2s ease-in-out; /* más lento y fluido */
     }
 
@@ -400,4 +333,69 @@ height:800px;}
         margin-top: 20px;
         width: 90%;
     }
+}
+
+/*--------------FOOTER----------------*/
+
+footer{
+height:400px;
+  background-color: #212529;
+  display:flex;
+  justify-content: space-evenly;
+  align-items: center;
+      height: 300px;
+
+}
+
+footer ul li{
+  list-style-type: none; }
+
+.auspiciantes {
+    text-align: center; /* centra el título */
+    margin: 20px 0;
+}
+
+.auspiciantes ul {
+    list-style: none; /* quita los puntos */
+    padding: 0;
+    margin: 10px 0 0 0;
+    display: flex !important; /* fuerza flex */
+    justify-content: center !important; /* fuerza centrado */
+    align-items: center; /* centra verticalmente si hay varios tamaños */
+    gap: 20px;
+}
+
+.auspiciantes li {
+    display: inline-block;
+}
+
+.auspiciantes i {
+    font-size: 2rem;
+    display: block;
+    margin: 0 auto; /* asegura centrado en cada li */
+}
+
+.redes {
+    text-align: center; /* centra el título */
+    margin: 20px 0;
+}
+
+.redes ul {
+    list-style: none; /* quita los puntos */
+    padding: 0;
+    margin: 10px 0 0 0;
+    display: flex !important; /* fuerza flex */
+    justify-content: center !important; /* fuerza centrado */
+    align-items: center; /* centra verticalmente si hay varios tamaños */
+    gap: 20px;
+}
+
+.redes li {
+    display: inline-block;
+}
+
+.redes i {
+    font-size: 2rem;
+    display: block;
+    margin: 0 auto; /* asegura centrado en cada li */
 }
