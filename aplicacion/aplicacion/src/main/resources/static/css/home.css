@@ -100,9 +100,9 @@ background-color:white;
 }
 .cartas {
   position: fixed;
-  bottom: 0;
+  bottom: -45px;
   left: 0;
-  height: 250px;
+  height: 400px;
   transform: translateX(-150%);
   opacity: 0;
   transition: transform 1s ease-out, opacity 1s ease-out;
