@@ -30,17 +30,6 @@ public class LocalidadServiceImpl implements LocalidadService {
                 .stream()
                 .map(LocalidadMapper::toDTO)// si tenés entidad Localidad
                 .toList();
-
-        if (localidades.isEmpty()) {
-            // si no hay datos en la DB, traemos de la API y guardamos
-            localidades = apiLocalidadClient.obtenerLocalidadesAMBA();
-            localidadRepository.saveAll(
-                    localidades.stream()
-                            .map(LocalidadMapper::fromDTO)
-                            .toList()
-            );
-        }
-
         return localidades;
     }
 

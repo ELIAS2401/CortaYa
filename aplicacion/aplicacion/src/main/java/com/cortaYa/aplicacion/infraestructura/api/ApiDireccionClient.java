@@ -30,6 +30,7 @@ public class ApiDireccionClient {
                     + "&max=20";
 
             DireccionResponseDTO response = restTemplate.getForObject(url, DireccionResponseDTO.class);
+            System.out.println("este es el dto---------------:  "+response);
 
             if (response != null && response.getDirecciones() != null) {
                 return response.getDirecciones().stream()
