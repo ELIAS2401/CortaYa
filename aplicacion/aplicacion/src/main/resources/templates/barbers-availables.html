@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* ---- estilos para las cards de barberos ---- */
+        .barberos-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .barbero-card {
+            width: 70%;
+            margin: auto;
+            background: linear-gradient(135deg, #ffffff, #f9f9f9);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .barbero-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .barbero-card__left {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .barbero-card__left h3 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: #222;
+        }
+
+        .barbero-subtitle {
+            font-size: 0.9rem;
+            color: #777;
+            margin: 5px 0 10px;
+        }
+
+        .rating {
+            color: #f1c40f;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .barbero-card__right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .barbero-card__right img {
+            width: 100%;
+            border-radius: 50%;
+            display: block;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .btn-reservar {
+            display: inline-block;
+            width: 100%;
+            padding: 10px 15px;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s ease;
+        }
+
+        .btn-reservar:hover {
+            background: linear-gradient(135deg, #27ae60, #1e8449);
+        }
+    </style>
+</head>
+<body>
+  
+<section class="dashboard-main">
+    <div class="dashboard-min__nav">
+        <div class="dashboard-logo">
+            <img th:src="@{/images/logo.png}" alt="Logo">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="/dashboard"><span>Inicio</span> <i class="fas fa-home"></i></a></li>
+            <li><a href="/reservar"><span>Reservar turno</span> <i class="fas fa-cut"></i></a></li>
+            <li><a href="/mis-reservas"><span>Mis reservas</span> <i class="fas fa-calendar-check"></i></a></li>
+            <li><a href="/favoritos"><span>Favoritos</span> <i class="fas fa-star"></i></a></li>
+            <li><a href="/pagos"><span>Métodos de pago</span> <i class="fas fa-credit-card"></i></a></li>
+            <li><a href="/promos"><span>Promociones</span> <i class="fas fa-gift"></i></a></li>
+            <li><a href="/soporte"><span>Soporte</span> <i class="fas fa-headset"></i></a></li>
+            <li><a href="/perfil"><span>Perfil</span> <i class="fas fa-user"></i></a></li>
+            <li><a href="/logout"><span>Cerrar sesión</span> <i class="fas fa-sign-out"></i></a></li>
+        </ul>
+    </div>
+
+    <div class="dashboard-min__content">
+        <div class="dashboard-min__content__header">
+            <h2>Barberos Disponibles</h2>
+            <div>
+                <img th:src="@{/images/user.png}" alt="User">
+                <span>Usuario Logueado</span>
+            </div>
+        </div>
+
+        <div class="dashboard-min__content__main">
+            <!-- Aquí iteramos los barberos -->
+            <div class="barberos-container">
+                <div class="barbero-card" th:each="barbero : ${barberos}">
+                    <div class="barbero-card__left">
+                        <h3 th:text="${barbero.nombre}"></h3>
+                        <p class="barbero-subtitle">Especialista en cortes modernos</p>
+                        <div class="rating">
+                            <i class="fas fa-star" th:each="i : ${#numbers.sequence(1, barbero.rating)}"></i>
+                            <i class="far fa-star" th:each="i : ${#numbers.sequence(barbero.rating + 1, 5)}"></i>
+                        </div>
+                    </div>
+
+                    <div class="barbero-card__right">
+                        <img th:src="${barbero.foto}" alt="Foto del barbero">
+                        <a href="/reservar" class="btn-reservar">Reservar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
