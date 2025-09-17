@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -21,6 +21,9 @@
             <span>Modo barber</span>
             <img src="/img/perfil.jpg" alt="Perfil" class="perfil-img">
         </div>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="btn btn-danger">Cerrar sesión</button>
+        </form>
     </header>
 
     <!-- CENTRO -->
@@ -64,9 +67,7 @@
         <div>© [Año] [Nombre del titular de los derechos]. Todos los derechos reservados.
         </div>
         <div></div>
-        <form th:action="@{/logout}" method="post">
-            <button type="submit" class="btn btn-danger">Cerrar sesión</button>
-        </form>
+
     </footer>
 
     <!-- Bootstrap JS + tu JS -->
