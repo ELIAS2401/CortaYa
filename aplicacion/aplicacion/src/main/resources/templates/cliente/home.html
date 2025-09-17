@@ -24,29 +24,31 @@
 </header>
 
 
-
 <!-- CENTRO -->
-<main class="text-center mt-5">
-    <img src="/img/bandera.png" alt="Bandera" class="bandera mb-4">
-<form th:action="@{/logout}" method="post">
-    <button type="submit" class="btn btn-danger">Cerrar sesión</button>
-</form>
-    <h2 class="fw-bold">Tu corte donde estés. Rápido, simple y a domicilio</h2>
-    <p class="text-light">Encontrá barberos cerca tuyo, reservá tu turno online y recibí el corte en casa</p>
+<main>
 
-    <a href="#" class="btn btn-primary mt-3 px-4 py-2">BUSCAR BARBERO</a>
+    <div class="text-center mt-5">
+        <img src="/img/bandera.png" alt="Bandera" class="bandera mb-4">
+        <h1 class="titulo-central">CORTA YA</h1>
+        <h2 class="fw-bold">Tu corte donde estés. Rápido, simple y a domicilio</h2>
+        <p class="text-light">Encontrá barberos cerca tuyo, reservá tu turno online y recibí el corte en casa</p>
+
+        <a href="#" class="btn btn-primary mt-3 px-4 py-2">BUSCAR BARBERO</a>
+    </div>
+
 </main>
 
 <!-- CARTAS (abajo izquierda) -->
-<img src="/img/cartas.png" alt="Cartas" class="cartas">
+<img src="/img/silla.png" alt="Cartas" class="cartas">
 
-<div id="carouselExample" class="carousel slide">
+
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2800">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="/img/messi.jpg" class="d-block w-100" alt="..." height="900px">
+            <img src="/img/maradona.jpg" class="d-block w-100" alt="..." height="900px">
         </div>
         <div class="carousel-item">
-            <img src="/img/maradona.jpg" class="d-block w-100" alt="..." height="900px">
+            <img src="/img/messi.jpg" class="d-block w-100" alt="..." height="900px">
         </div>
         <div class="carousel-item">
             <img src="/img/potro.jpg" class="d-block w-100" alt="..." height="900px">
@@ -62,12 +64,100 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+
+<div class="seccion-Descripcion">
+    <div class="seccion-Descripcion-texto">
+        <h2 class="titulo-Segundaseccion">Barberos a domicilio: Tu estilo a tu puerta</h2>
+        <p class="parrafo-Segundaseccion">Barberos a Domicilio: Tu Estilo a Tu Puerta
+            En la actualidad, la comodidad y la practicidad son dos aspectos clave que buscan las personas en sus vidas
+            cotidianas. Ya sea por la falta de tiempo o simplemente por el deseo de disfrutar de los servicios desde la
+            comodidad de su hogar, la tendencia de solicitar servicios a domicilio está en constante crecimiento. Uno de
+            los servicios más solicitados es el de los barberos a domicilio, una opción que te permite mantener tu
+            estilo y cuidado personal sin salir de casa.cc
+        </p>
+        <img src="/img/bandera.png" alt="Bandera" class="bandera mb-4">
+    </div>
+    <div class="seccion-Descripcion-imagen">
+        <img src="/img/diegoRetro.png" alt="diegoRetro" class="bandera mb-4">
+    </div>
+
+</div>
+
+<div class="seccion-informacion">
+    <div class="seccion-informacion-imagen">
+        <img src="/img/barberia.jpg" alt="chicoCortandoseElPelo">
+    </div>
+    <div class="seccion-informacion-textos">
+
+        <h2>¿Cómo Solicitar un Barbero a Domicilio?</h2>
+        <ul>
+            <li><h5>Reserva</h5>
+                <p>Comunícate con el barbero que mas te guste y programa una cita en el horario que mejor te
+                    convenga.</p>
+            </li>
+            <li><h5>Confirma la Cita</h5>
+                <p>Recibirás una confirmación de la cita y detalles sobre el estilista que te atenderá.
+                </p>
+            </li>
+            <li><h5>Preparación</h5>
+                <p>Asegúrate de tener un espacio limpio y bien iluminado listo para la cita.</p>
+            </li>
+            <li><h5>Disfruta</h5>
+                <p> Relájate y disfruta de la experiencia de belleza en la comodidad de tu hogar.</p>
+            </li>
+        </ul>
+        <div><img src="/img/fernet.png" alt="fernet" class="logo-fernet"></div>
+    </div>
+</div>
+
+<div class="seccion-servicios">
+    <div class="seccion-servicios-titulo">
+        <h2>Servicios disponibles</h2>
+    </div>
+    <div class="nav-subtitulo-servicios">
+        <p>Los barberos a domicilio ofrecen una amplia gama de servicios de belleza y cuidado personal. Algunos de los más populares incluyen:</p>
+    </div>
+    <div class="nav-seleccion-servicio">
+        <ul>
+            <li><a data-servicio="adultx"><h5>Corte adultx</h5></a></li>
+            <li><a data-servicio="nini"><h5>Corte para niñe</h5></a></li>
+            <li><a data-servicio="barba"><h5>Afeitado barba</h5></a></li>
+            <li><a data-servicio="tinte"><h5>Coloración y tinte</h5></a></li>
+        </ul>
+    </div>
+    <div class="servicio-elegido">
+
+        <div class="info-seccion-elegida">
+            <h3 id="titulo-servicio">Corte elegido</h3>
+            <p id="descripcion-servicio">Seleccioná un servicio para ver la descripción.</p>
+        </div>
+        <div>
+            <img id="imagen-servicio" src="/img/tipoDeCorte/pelado.jpg" alt="corte de pelo">
+        </div>
+    </div>
+</div>
+
 <footer>
 
-    <div></div>
+    <div class="redes">
+        <h5> Redes </h5>
+        <ul>
+            <li><i class="fa-brands fa-facebook"></i></li>
+            <li><i class="fa-brands fa-square-x-twitter"></i></li>
+            <li><i class="fa-brands fa-square-instagram"></i></li>
+        </ul>
+    </div>
     <div>© [Año] [Nombre del titular de los derechos]. Todos los derechos reservados.
     </div>
-    <div></div>
+    <div class="auspiciantes">
+        <h5>Auspiciantes</h5>
+        <ul>
+            <li><i class="fa-brands fa-staylinked"></i></li>
+            <li><i class="fa-brands fa-node-js"></i></li>
+            <li><i class="fa-solid fa-webhook"></i></li>
+        </ul>
+    </div>
+
 
 </footer>
 
