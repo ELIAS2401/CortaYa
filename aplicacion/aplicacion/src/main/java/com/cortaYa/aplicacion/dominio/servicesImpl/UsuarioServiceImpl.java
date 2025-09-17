@@ -54,7 +54,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         // Encriptamos la contraseña acá también
         String hashedPassword = passwordEncoder.encode(usuarioDTO.getContrasenia());
 
-        Usuario cliente = UsuarioBarber.builder()
+        Usuario barbero = UsuarioBarber.builder()
                 .nombre(usuarioDTO.getNombre())
                 .email(usuarioDTO.getEmail())
                 .nroCelular(usuarioDTO.getNroCelular())
@@ -63,10 +63,10 @@ public class UsuarioServiceImpl implements UsuarioService {
                 .rol(RolEnum.ROLE_BARBERO)
                 .build();
 
-        if (usuarioRepository.findByEmail(cliente.getEmail()).isPresent()) {
+        if (usuarioRepository.findByEmail(barbero.getEmail()).isPresent()) {
             throw new EmailRegistradoException("El email ya está registrado.");
         }
-        usuarioRepository.save(cliente);
+        usuarioRepository.save(barbero);
     }
 
     @Override
