@@ -41,7 +41,33 @@
 
         <div class="dashboard-min__content__main">
             <div class="asslum">
-sdasadsda
+                <form class="barbero-filter">
+                    <h3>Filtrar Barberos</h3>
+            
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez">
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="rating">Rating</label>
+                        <select id="rating" name="rating">
+                            <option value="">Todos</option>
+                            <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+                            <option value="4">⭐⭐⭐⭐ (4+)</option>
+                            <option value="3">⭐⭐⭐ (3+)</option>
+                            <option value="2">⭐⭐ (2+)</option>
+                            <option value="1">⭐ (1+)</option>
+                        </select>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="precio">Precio máximo</label>
+                        <input type="number" id="precio" name="precio" placeholder="Ej: 500">
+                    </div>
+            
+                    <button type="submit" class="btn-filtrar">Aplicar Filtros</button>
+                </form>
             </div>
             <div class="barberos-container">
                 <div class="barbero-card" th:each="barbero : ${barberos}">
