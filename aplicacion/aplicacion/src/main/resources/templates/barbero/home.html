@@ -12,20 +12,35 @@
 
 <body class="bg-dark text-white">
 
-    <!-- HEADER -->
-    <header id="mainHeader" class="d-flex justify-content-between align-items-center p-3">
-        <img src="/img/logo.png" alt="Logo" class="logo">
+<!-- HEADER -->
+<header id="mainHeader" class="d-flex justify-content-between align-items-center p-3">
+    <img src="/img/logo.png" alt="Logo" class="logo">
 
-        <div class="d-flex align-items-center gap-3">
-            <span>Soy facha</span>
-            <span>Modo barber</span>
-            <img src="/img/perfil.jpg" alt="Perfil" class="perfil-img">
-        </div>
-        <form th:action="@{/logout}" method="post">
-            <button type="submit" class="btn btn-danger">Cerrar sesión</button>
-        </form>
-    </header>
+    <!-- BOTÓN DE USUARIO -->
+    <div class="dropdown text-end">
+        <button class="btn btn-warning dropdown-toggle" type="button" id="menuUsuario" data-bs-toggle="dropdown" aria-expanded="false">
+            ¡Hola Martin!
+        </button>
 
+        <!-- MENÚ DESPLEGABLE -->
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="menuUsuario">
+            <li class="dropdown-header">martin@email.com</li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-chat-dots"></i> Mis mensajes</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-calendar"></i> Mis turnos</a></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-heart"></i> Mis gastos</a></li>
+            <li>
+                <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                    <span><i class="bi bi-people"></i> Mis solicitudes</span>
+                    <span class="badge bg-danger rounded-pill">2</span>
+                </a>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Mi perfil</a></li>
+            <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a></li>
+        </ul>
+    </div>
+
+</header>
     <!-- CENTRO -->
     <main>
 
@@ -162,7 +177,6 @@
 
 
     </footer>
-
     <!-- Bootstrap JS + tu JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/home.js"></script>

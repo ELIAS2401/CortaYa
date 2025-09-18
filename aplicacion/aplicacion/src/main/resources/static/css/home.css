@@ -43,7 +43,7 @@ body {
   }
 }
 
-/*--------------HEADER---------*/
+/*--------------HEADER GRAL---------*/
 #mainHeader {
     height: 80px;
     background-color: #212529; /* o el color que uses */
@@ -94,6 +94,15 @@ gap:750px;
 
 
 /*--------------------------*/
+
+/*-------------HEADER CLIENTE -------------*/
+
+.dropdown-menu.show{
+max-width:50%;
+}
+
+/*--------------------------*/
+
 
 
 /* texto central - slogan*/
