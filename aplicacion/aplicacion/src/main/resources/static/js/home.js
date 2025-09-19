@@ -79,26 +79,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ----- INFO DINÁMICA -----
     const servicios = {
-            adultx: {
-                titulo: "Corte Adultx",
-                descripcion: "Un corte clásico o moderno, adaptado a tu estilo. Nuestros barberos profesionales te dejarán impecable sin salir de tu casa.",
-                imagen: "/img/messi.jpg"
-            },
-            nini: {
-                titulo: "Corte para Niñe",
-                descripcion: "Cortes divertidos y cómodos para los más pequeños. Hacemos que la experiencia sea amena y rápida para ellxs.",
-                imagen: "/img/maradona.jpg"
-            },
-            barba: {
-                titulo: "Afeitado de Barba",
-                descripcion: "Un afeitado prolijo, suave y a medida. Disfrutá de una experiencia relajante con acabado profesional.",
-                imagen: "/img/potro.jpg"
-            },
-            tinte: {
-                titulo: "Coloración y Tinte",
-                descripcion: "Dale color a tu estilo. Realizamos coloraciones completas, reflejos, matices y mucho más. Todo sin salir de tu casa.",
-                imagen: "/img/tipoDeCorte/seleccion.avif"
-            }
+adultx: {
+               titulo: "Corte Adulto",
+               descripcion: "Un corte clásico o moderno, adaptado 100% a tu estilo y personalidad. Nuestros barberos profesionales escuchan tus preferencias y te asesoran en tendencias actuales, cuidando cada detalle para que luzcas impecable. Disfrutá de un servicio cómodo, sin esperas y directamente en la tranquilidad de tu hogar.",
+               imagen: "/img/messi.jpg"
+           },
+           nini: {
+               titulo: "Corte para Niños",
+               descripcion: "Cortes divertidos, seguros y cómodos para lxs más pequeñxs de la casa. Nuestros barberos se especializan en lograr un ambiente ameno, rápido y sin estrés, pensando en que la experiencia sea agradable tanto para ellxs como para vos. Un servicio pensado para que jugar y verse bien vayan de la mano.",
+               imagen: "/img/maradona.jpg"
+           },
+           barba: {
+               titulo: "Afeitado de Barba",
+               descripcion: "Un afeitado prolijo, suave y a medida. Usamos técnicas profesionales y productos de calidad que protegen tu piel, brindando una sensación fresca y relajante. Ideal para quienes buscan un look bien definido o simplemente renovar su imagen con un acabado impecable.",
+               imagen: "/img/potro.jpg"
+           },
+           tinte: {
+               titulo: "Coloración y Tinte",
+               descripcion: "Dale un nuevo aire a tu look con nuestra amplia gama de coloraciones: reflejos, matices, retoques y cambios de estilo completos. Trabajamos con productos de calidad que cuidan tu cabello y resaltan tu personalidad. Todo esto con la comodidad de recibir el servicio en tu casa.",
+               imagen: "/img/tipoDeCorte/seleccion.avif"
+}
         };
 
    const links = document.querySelectorAll(".nav-seleccion-servicio a");
