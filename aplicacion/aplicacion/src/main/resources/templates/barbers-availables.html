@@ -66,7 +66,14 @@
                         <input type="number" id="precio" name="precio" placeholder="Ej: 500">
                     </div>
             
-                    <button type="submit" class="btn-filtrar">Aplicar Filtros</button>
+                    <button type="submit" class="btn-filtrar">
+                        <svg xmlns="http://www.w3.org/2000/svg" 
+                             width="18" height="18" fill="currentColor" 
+                             viewBox="0 0 24 24">
+                            <path d="M3 4h18l-7 8v8l-4-2v-6z"/>
+                        </svg>
+                        Aplicar Filtros
+                    </button>
                 </form>
             </div>
             <div class="barberos-container">
@@ -76,7 +83,6 @@
                         <p class="barbero-subtitle">Especialista en cortes modernos</p>
                         <div class="rating">
                             <i class="fas fa-star" th:each="i : ${#numbers.sequence(1, barbero.rating)}"></i>
-                            <i class="far fa-star" th:each="i : ${#numbers.sequence(barbero.rating + 1, 5)}"></i>
                         </div>
                     </div>
 
